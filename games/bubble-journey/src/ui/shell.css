@@ -1,0 +1,310 @@
+:root {
+  font-family:"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
+  color:#304d44;
+  background:#f8f7f2;
+  font-synthesis:none;
+  --green:#2f7b65;
+  --ink:#304d44;
+  --muted:#91a098;
+  --line:#e8ebe2;
+  --cream:#f8f7f2
+}
+
+* {
+  box-sizing:border-box
+}
+
+body {
+  margin:0;
+  min-width:320px
+}
+
+button,a,select,input {
+  -webkit-tap-highlight-color:transparent
+}
+
+button,select {
+  font:inherit
+}
+
+button {
+  cursor:pointer
+}
+
+button {
+  border:0;
+  background:none;
+  color:inherit
+}
+
+button:disabled {
+  cursor:wait;
+  opacity:.6
+}
+
+button,a,select {
+  touch-action:manipulation
+}
+
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible {
+  outline:3px solid #e5b857;
+  outline-offset:4px
+}
+
+button {
+  transition:background .18s,transform .18s,box-shadow .18s
+}
+
+button:active {
+  transform:translateY(1px)
+}
+
+h1,h2,h3,p {
+  margin:0
+}
+
+a {
+  color:inherit;
+  text-decoration:none
+}
+
+.hidden {
+  display:none!important
+}
+
+.icon {
+  width:21px;
+  height:21px;
+  flex-shrink:0;
+  vertical-align:middle
+}
+
+.site-shell {
+  max-width:1312px;
+  margin:auto;
+  padding:0 40px
+}
+
+.header {
+  height:97px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #e6e9df;
+  gap:24px
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:11px;
+  flex-shrink:0
+}
+
+.brand-mark {
+  height:45px;
+  width:45px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  background:#327c67;
+  color:#fff;
+  box-shadow:inset 0 -4px 0 #246a581a;
+  transform:rotate(-8deg)
+}
+
+.brand-mark .icon {
+  width:29px;
+  height:29px;
+  transform:rotate(8deg)
+}
+
+.brand strong {
+  font-size:22px;
+  letter-spacing:2px;
+  line-height:1.4
+}
+
+.brand small {
+  display:block;
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:2.4px;
+  color:#7b9387
+}
+
+.brand-spark {
+  font-size:18px;
+  color:#dfb969;
+  margin-left:5px
+}
+
+.header nav {
+  display:flex;
+  height:100%;
+  gap:33px;
+  align-items:center;
+  margin-left:40px
+}
+
+.nav-link {
+  height:100%;
+  padding:0;
+  font-size:14px;
+  color:#87948d;
+  position:relative;
+  white-space:nowrap
+}
+
+.nav-link:hover {
+  color:var(--green)
+}
+
+.nav-link.active {
+  font-weight:700;
+  color:var(--green)
+}
+
+.nav-link.active:after {
+  position:absolute;
+  bottom:22px;
+  left:calc(50% - 9px);
+  content:"";
+  width:18px;
+  height:3px;
+  border-radius:10px;
+  background:var(--green)
+}
+
+.header-actions {
+  display:flex;
+  align-items:center;
+  gap:12px
+}
+
+.local-badge {
+  font-size:11px;
+  color:#8b998f;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-right:10px
+}
+
+.local-badge i,.start-note i,.preview-label i {
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#79a68d;
+  display:inline-block
+}
+
+.icon-button {
+  border-radius:50%;
+  width:35px;
+  height:35px;
+  display:inline-grid;
+  place-items:center;
+  color:#738a7c;
+  background:transparent
+}
+
+.icon-button:hover {
+  background:#e9eee4;
+  color:var(--green)
+}
+
+.header-actions .icon-button {
+  border:1px solid #e1e7dc
+}
+
+.intro {
+  padding:30px 0 29px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+
+.eyebrow {
+  font-size:9px;
+  letter-spacing:1.9px;
+  color:#8b9a8f;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:10px
+}
+
+.eyebrow>span {
+  height:5px;
+  width:5px;
+  border-radius:2px;
+  background:#d8b677
+}
+
+.intro h1 {
+  font-size:32px;
+  letter-spacing:1px;
+  font-weight:750;
+  line-height:1.5
+}
+
+.intro h1>span:not(.title-star) {
+  color:var(--green)
+}
+
+.title-star {
+  display:inline-block;
+  color:#d6b36b;
+  font-size:30px;
+  transform:translateY(-8px) rotate(8deg);
+  margin-left:14px;
+  font-weight:400
+}
+
+.intro p {
+  font-size:12px;
+  color:#8c998f;
+  margin-top:6px;
+  letter-spacing:.4px
+}
+
+.intro-note {
+  display:flex;
+  align-items:center;
+  position:relative;
+  color:#a4ad9f;
+  margin:10px 30px 0 0;
+  gap:16px
+}
+
+.intro-note>span:nth-child(2) {
+  font-size:12px;
+  line-height:1.9;
+  letter-spacing:2px;
+  transform:rotate(-6deg)
+}
+
+.intro-note b {
+  font-weight:500
+}
+
+.intro-note svg {
+  width:75px;
+  position:absolute;
+  right:-23px;
+  bottom:-25px
+}
+
+.tiny-stars {
+  font-size:30px;
+  color:#d1b97a;
+  letter-spacing:5px
+}
+
+.game-layout {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 310px;
+  gap:24px;
+  align-items:start
+}

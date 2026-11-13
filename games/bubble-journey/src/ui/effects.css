@@ -1,0 +1,99 @@
+.loading {
+  position:absolute;
+  inset:0;
+  z-index:5;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  background:#e0ebd7;
+  color:#66825c;
+  font-size:14px
+}
+
+.loading-bubble {
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:3px solid #9fc5ad;
+  border-top-color:#327b65;
+  animation:spin 1s linear infinite
+}
+
+@keyframes spin {
+  to {
+    transform:rotate(360deg)
+  }
+}
+
+.countdown {
+  position:absolute;
+  inset:0;
+  z-index:10;
+  background:#315d4940;
+  backdrop-filter:blur(2px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:#fff;
+  text-shadow:0 3px 0 #40705940;
+  pointer-events:none
+}
+
+.countdown b {
+  font-size:110px;
+  line-height:1.3;
+  font-weight:800
+}
+
+.countdown span {
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:3px
+}
+
+.countdown small {
+  font-size:12px;
+  letter-spacing:2px
+}
+
+.spectating {
+  position:absolute;
+  z-index:12;
+  bottom:32px;
+  left:50%;
+  transform:translateX(-50%);
+  border-radius:10px;
+  padding:12px 15px;
+  background:#fff9eeeF;
+  font-size:11px;
+  white-space:nowrap;
+  box-shadow:0 4px 18px #355c4020
+}
+
+.spectating button {
+  color:var(--green);
+  font-size:11px;
+  font-weight:bold;
+  margin-left:10px;
+  text-decoration:underline
+}
+
+.toast {
+  position:fixed;
+  z-index:99;
+  bottom:32px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:13px 22px;
+  border-radius:30px;
+  background:#304d44ed;
+  color:#fff;
+  font-size:12px;
+  box-shadow:0 5px 25px #20463222;
+  max-width:90vw;
+  text-align:center;
+  pointer-events:none
+}

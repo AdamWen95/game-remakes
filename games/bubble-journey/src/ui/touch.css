@@ -1,0 +1,149 @@
+@media(max-width:700px) {
+  .touch-controls:not(.hidden) {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 25px 20px;
+    gap:12px;
+    touch-action:none;
+    border-top:1px solid #edf1e5
+  }
+  .dpad {
+    width:132px;
+    height:132px;
+    display:grid;
+    grid-template-columns:repeat(3,44px);
+    grid-template-rows:repeat(3,44px);
+    touch-action:none
+  }
+  .dpad button {
+    background:#eaf1e2;
+    border:1px solid #dce7d2;
+    border-radius:10px;
+    color:#6d8b5f;
+    font-size:17px;
+    touch-action:none;
+    user-select:none;
+    box-shadow:0 3px 0 #d3dfc6
+  }
+  .dpad button[data-dir=up] {
+    grid-column:2;
+    grid-row:1
+  }
+  .dpad button[data-dir=left] {
+    grid-column:1;
+    grid-row:2
+  }
+  .dpad>span {
+    grid-column:2;
+    grid-row:2;
+    background:#eaf1e2;
+    border-radius:50%;
+    margin:8px
+  }
+  .dpad button[data-dir=right] {
+    grid-column:3;
+    grid-row:2
+  }
+  .dpad button[data-dir=down] {
+    grid-column:2;
+    grid-row:3
+  }
+  .dpad .pressed {
+    background:#c5daba;
+    transform:translateY(2px);
+    box-shadow:none
+  }
+  #touch-bomb {
+    width:88px;
+    height:88px;
+    flex-shrink:0;
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:3px;
+    color:#fff;
+    background:#448d72;
+    box-shadow:0 6px 0 #2d6e54,0 8px 15px #306a4322;
+    touch-action:none;
+    user-select:none
+  }
+  #touch-bomb:active {
+    transform:translateY(4px);
+    box-shadow:0 2px 0 #2d6e54
+  }
+  #touch-bomb .icon {
+    width:32px;
+    height:32px
+  }
+  #touch-bomb span {
+    font-size:11px
+  }
+  .touch-hint {
+    font-size:9px;
+    color:#a2b093;
+    line-height:1.9;
+    text-align:center
+  }
+  .match-panel {
+    padding:21px
+  }
+  .match-panel #players {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px
+  }
+  .player-row {
+    padding:6px 3px;
+    border:0;
+    gap:4px
+  }
+  .player-row small {
+    display:none
+  }
+  .player-row b {
+    font-size:10px
+  }
+  .player-row .mini-portrait {
+    width:32px;
+    height:39px
+  }
+  .player-state {
+    font-size:8px;
+    padding:4px
+  }
+  .match-panel .section-label {
+    margin-top:19px
+  }
+  .event-message {
+    min-height:0;
+    padding:16px 2px
+  }
+  .spectating {
+    font-size:9px;
+    padding:10px;
+    bottom:22px
+  }
+  .spectating button {
+    font-size:9px;
+    margin-left:5px
+  }
+  body:not([data-phase=lobby]) .intro,body:not([data-phase=lobby]) .bottom-strip {
+    display:none
+  }
+  body:not([data-phase=lobby]) .game-layout {
+    margin-top:17px
+  }
+  body:not([data-phase=lobby]) .arena-footer {
+    display:none
+  }
+  body:not([data-phase=lobby]) .daily-tip {
+    display:none
+  }
+  .preview-label {
+    font-size:9px;
+    bottom:24px
+  }
+}

@@ -1,0 +1,32 @@
+# Dependencies, builds, archives and local tooling
+node_modules/
+dist/
+release/
+.npm-cache/
+.browsers/
+.qa/
+.local/
+test-results/
+playwright-report/
+*.log
+*.tsbuildinfo
+
+# Machine-specific deployment folders and raw verification evidence
+**/deploy/[0-9]*/
+**/docs/SERVER-*.md
+**/docs/*-smoke.json
+**/docs/screenshots/
+
+# Local environment values and credentials; sanitized examples may be shared
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db

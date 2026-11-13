@@ -1,0 +1,22 @@
+{
+  "name": "gpt6-astra-demos",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Playable browser games and interactive demos, with standalone HTML exports.",
+  "workspaces": ["games/*"],
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "dev": "npm run build && npm run preview",
+    "dev:game": "npm run dev --workspace=bubble-journey --",
+    "build": "node scripts/build.mjs",
+    "build:single": "npm run build:single --workspaces",
+    "preview": "node scripts/serve.mjs",
+    "test": "node --test tests/catalog.test.mjs && npm run test --workspaces",
+    "test:e2e": "playwright test",
+    "test:game": "npm run test:e2e --workspace=bubble-journey --",
+    "test:single": "npm run test:single --workspaces --",
+    "package": "npm run build && node scripts/package.mjs"
+  },
+  "devDependencies": { "@playwright/test": "1.65.0" }
+}

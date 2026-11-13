@@ -1,0 +1,26 @@
+import { chromium } from '@playwright/test';
+import { mkdir } from 'node:fs/promises';
+
+await mkdir('docs/screenshots', { recursive: true });
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1440, height: 1080 }, deviceScaleFactor: 1 });
+const errors = [];
+page.on('pageerror', error => { errors.push(error.message); console.log('PAGE ERROR', error.stack); });
+page.on('console', msg => { if (msg.type() === 'error' || msg.type() === 'warning') console.log('CONSOLE', msg.type(), msg.text()); });
+await page.goto('http://127.0.0.1:5173/');
+await page.locator('#start').waitFor({ state: 'visible' });
+await page.waitForFunction(() => !document.querySelector('#start').disabled).catch(async e => { await page.screenshot({ path: 'docs/screenshots/load-error.png', fullPage: true }); throw e; });
+await page.screenshot({ path: 'docs/screenshots/lobby-desktop.png', fullPage: true });
+console.log(JSON.stringify({ errors, phase: await page.locator('body').getAttribute('data-phase'), canvas: await page.locator('canvas').boundingBox() }));
+await page.locator('#start').click();
+await page.waitForFunction(() => document.body.dataset.phase === 'playing');
+await page.keyboard.press('Space');
+await page.keyboard.down('ArrowRight');
+await page.waitForTimeout(430);
+await page.keyboard.up('ArrowRight');
+await page.keyboard.down('ArrowDown');
+await page.waitForTimeout(230);
+await page.keyboard.up('ArrowDown');
+await page.screenshot({ path: 'docs/screenshots/match-desktop.png', fullPage: true });
+console.log(JSON.stringify({ errors, player: await page.evaluate(() => window.__bubbleSnapshot?.().actors[0]) }));
+await browser.close();

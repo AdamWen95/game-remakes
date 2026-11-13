@@ -1,0 +1,253 @@
+@media(max-width:700px) {
+  .site-shell {
+    padding:0 17px
+  }
+  .header {
+    height:76px
+  }
+  .header nav {
+    gap:16px;
+    margin-left:auto
+  }
+  .nav-link {
+    font-size:11px
+  }
+  .header nav .nav-link:first-child {
+    display:none
+  }
+  .header-actions {
+    gap:0
+  }
+  .header-actions #help {
+    display:none
+  }
+  .header-actions .icon-button {
+    width:31px;
+    height:31px;
+    border:0
+  }
+  .brand {
+    gap:8px
+  }
+  .brand strong {
+    font-size:18px;
+    letter-spacing:1px
+  }
+  .brand small {
+    font-size:6px;
+    letter-spacing:1.8px
+  }
+  .brand-mark {
+    width:34px;
+    height:34px;
+    border-radius:12px
+  }
+  .brand-mark .icon {
+    width:25px
+  }
+  .brand-spark {
+    display:none
+  }
+  .intro {
+    padding:25px 0 23px
+  }
+  .intro h1 {
+    font-size:26px;
+    letter-spacing:0
+  }
+  .title-star {
+    font-size:24px;
+    margin-left:5px
+  }
+  .eyebrow {
+    font-size:7px;
+    letter-spacing:1.4px;
+    margin-bottom:8px
+  }
+  .intro p {
+    font-size:10px;
+    margin-top:5px
+  }
+  .game-layout {
+    display:flex;
+    flex-direction:column;
+    gap:17px
+  }
+  .arena-card {
+    width:100%;
+    border-radius:16px
+  }
+  .arena-toolbar {
+    height:64px;
+    padding:0 16px
+  }
+  .arena-heading h2 {
+    font-size:14px
+  }
+  .arena-heading span:not(.mode-icon) {
+    font-size:9px
+  }
+  .mode-icon {
+    display:grid;
+    width:31px;
+    height:31px
+  }
+  .arena-tools {
+    gap:4px
+  }
+  .arena-stage {
+    height:auto;
+    aspect-ratio:15/13;
+    padding:9px 8px 13px;
+    max-height:70dvh;
+    min-height:280px
+  }
+  .arena-footer {
+    height:47px;
+    justify-content:center
+  }
+  .keyboard-tip {
+    font-size:9px;
+    gap:8px
+  }
+  .key-group {
+    gap:3px
+  }
+  .key-group kbd {
+    min-width:22px
+  }
+  .sidebar {
+    width:100%;
+    gap:14px
+  }
+  .setup-panel {
+    padding:22px
+  }
+  .panel-heading {
+    margin-bottom:20px
+  }
+  .panel-heading h2 {
+    font-size:16px
+  }
+  .panel-heading>span {
+    font-size:9px
+  }
+  .section-label h3 {
+    font-size:12px
+  }
+  .section-label small {
+    display:block;
+    font-size:9px
+  }
+  .selected-character {
+    height:111px;
+    gap:15px
+  }
+  .selected-character strong {
+    font-size:20px
+  }
+  .selected-character p {
+    font-size:11px
+  }
+  #selected-portrait {
+    height:108px;
+    width:92px
+  }
+  #selected-portrait svg {
+    height:104px;
+    width:91px
+  }
+  #selected-portrait:before {
+    width:85px;
+    height:70px
+  }
+  .characters {
+    gap:10px
+  }
+  .character-option {
+    padding:5px 2px 9px
+  }
+  .character-option>span {
+    height:61px
+  }
+  .character-option svg {
+    height:64px;
+    width:57px
+  }
+  .character-option b {
+    font-size:10px
+  }
+  .map-label {
+    margin:25px 0 14px
+  }
+  .maps {
+    gap:11px
+  }
+  .map-option>span {
+    height:58px
+  }
+  .map-option b {
+    font-size:10px;
+    padding:9px 0
+  }
+  .shuffle-button {
+    font-size:11px;
+    padding-top:14px
+  }
+  .match-settings {
+    margin:22px 0 19px;
+    gap:15px
+  }
+  .match-settings label {
+    font-size:10px
+  }
+  .match-settings select {
+    padding:10px;
+    font-size:12px
+  }
+  .primary-button {
+    padding:16px;
+    min-height:51px
+  }
+  .start-note {
+    font-size:9px;
+    margin-top:13px
+  }
+  .daily-tip {
+    padding:17px 21px
+  }
+  .daily-tip p {
+    display:flex;
+    gap:16px;
+    align-items:center
+  }
+  .daily-tip b {
+    white-space:nowrap;
+    margin:0
+  }
+  .daily-tip p>span {
+    font-size:10px
+  }
+  .daily-tip br {
+    display:none
+  }
+  .bottom-strip {
+    margin:23px 0 22px;
+    gap:12px
+  }
+  .bottom-strip>div {
+    flex-direction:column;
+    gap:8px
+  }
+  .bottom-strip b {
+    font-size:9px;
+    line-height:1.6
+  }
+  .bottom-strip p>span {
+    font-size:8px
+  }
+  .page-footer {
+    padding:18px 0 24px;
+    font-size:8px
+  }
+}

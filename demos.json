@@ -1,0 +1,19 @@
+{
+  "title": "GPT6 Astra Demos",
+  "description": "网页游戏与交互实验合集",
+  "games": [
+    {
+      "id": "bubble-journey",
+      "title": "泡泡奇旅",
+      "subtitle": "Bubble Journey",
+      "description": "带上你的可爱，走进薄荷花园。放一颗泡泡，拐个弯，和三个机灵的 AI 伙伴来场热热闹闹的对决。",
+      "category": "休闲竞技",
+      "tags": ["3 位 AI 对手", "随机地图", "原创视听"],
+      "controls": "WASD / 方向键移动 · 空格放泡泡",
+      "technology": "Phaser 3 · TypeScript · Vite",
+      "singleFile": "release/bubble-journey.html",
+      "preview": "docs/images/game-lobby.png",
+      "accent": "mint"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7f8fc" />
+  <meta name="description" content="{{DESCRIPTION}}。探索可直接游玩的游戏，或下载单文件 HTML 离线体验。" />
+  <title>{{TITLE}} · 打开，就能玩</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23292d45'/%3E%3Cpath d='M32 10L38 26L54 32L38 38L32 54L26 38L10 32L26 26Z' fill='%23c9c3ff'/%3E%3C/svg%3E" />
+  <style>{{STYLE}}</style>
+</head>
+<body>
+  <a class="skip-link" href="#games">跳到游戏作品</a>
+  <header class="header wrap"><a class="brand" href="#top" aria-label="GPT6 Astra Demos 首页"><span class="brand-symbol">✦</span><span>GPT6 <b>ASTRA</b><small>THE DEMO COLLECTION</small></span></a><nav aria-label="主导航"><a href="#games">探索作品</a><a href="#sharing">如何体验</a><a href="#about">关于合集</a></nav><a class="header-link" href="#games"><span class="status-dot"></span>{{COUNT}} 个可玩作品 <span>↗</span></a></header>
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="hero-title"><div class="hero-copy"><div class="eyebrow"><span class="small-star">✦</span> IDEAS, MADE PLAYABLE.</div><h1 id="hero-title">想法不止于想象。<br><span>打开，就能玩。</span><i>✳</i></h1><p>用 GPT6 Astra，把灵感做成游戏。<br>这里收集那些可以亲手体验、随身带走的小小世界。</p><div class="hero-actions"><a class="button dark" href="#games">探索游戏 <span>↘</span></a><span class="hero-note">无需安装 <i>·</i> 直接在浏览器体验</span></div></div><div class="orbit" aria-hidden="true"><div class="orbit-ring one"></div><div class="orbit-ring two"></div><div class="orbit-core"><span>✦</span><small>ASTRA</small></div><span class="orbit-star a">✧</span><span class="orbit-star b">✦</span><div class="orbit-label label-a"><span>▶</span> PRESS PLAY</div><div class="orbit-label label-b"><span>↗</span> ONE FILE. ALL THE FUN.</div><div class="orbit-label label-c">&lt;idea&gt; <i>→</i> &lt;play&gt;</div><span class="orbit-dot dot-a"></span><span class="orbit-dot dot-b"></span></div><div class="hero-index">COLLECTION / VOL. 01 <span>向下探索 ↓</span></div></section>
+    <section class="works wrap" id="games" aria-labelledby="games-title"><div class="section-heading"><div><span class="section-number">01 / THE COLLECTION</span><h2 id="games-title">来，玩点新鲜的。<sup>{{COUNT}}</sup></h2></div><label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><input id="game-search" type="search" placeholder="搜索游戏或玩法" aria-label="搜索游戏或玩法" autocomplete="off"/><kbd>/</kbd></label></div><div class="collection-line"><span><i class="status-dot"></i> 全部作品 <b id="visible-count">{{COUNT}}</b></span><span>每个作品，都是一次新的尝试。</span></div><div id="game-list">{{CARDS}}</div><div class="empty-state" id="empty-state" hidden role="status"><span>✧</span><h3>这个想法，还没被找到。</h3><p>换个关键词，或看看全部作品。</p><button class="button dark" id="clear-search">查看全部作品 →</button></div><div class="next-experiment"><span>＋</span><p>为下一个想法，留一个位置。<small>新的游戏与交互实验，会继续在这里相遇。</small></p><b>TO BE CONTINUED</b></div></section>
+    <section class="sharing wrap" id="sharing" aria-labelledby="sharing-title"><div class="sharing-title"><span class="section-number">02 / TAKE IT WITH YOU</span><h2 id="sharing-title">一份文件。<br>随时开玩。</h2><p>好玩的东西，分享起来也应该简单。</p></div><div class="share-step"><span class="step-icon">↗</span><small>01 / PLAY ONLINE</small><h3>点开，进入小世界</h3><p>点击“开始游玩”，直接在当前浏览器体验完整游戏。</p></div><div class="share-step"><span class="step-icon lilac">↓</span><small>02 / KEEP A COPY</small><h3>下载，把快乐带走</h3><p>保存一个 HTML 文件，用浏览器打开，断网也能继续玩。</p></div><div class="share-step"><span class="step-icon peach">♡</span><small>03 / PASS IT ON</small><h3>把文件，交给朋友</h3><p>只分享这一份文件就够了。无需依赖目录，也不需要安装工具。</p></div></section>
+    <section class="about wrap" id="about"><span class="about-star">✦</span><div><span class="section-number">A GROWING PLAYGROUND</span><h2>让每一个 Demo，都成为可体验的作品。</h2><p>从第一颗泡泡开始，保留创作的好奇心。各个游戏独立维护、独立运行；这里是它们共同的入口。</p></div><a href="#games" aria-label="返回游戏作品">↗</a></section>
+  </main>
+  <footer class="footer wrap"><a class="footer-brand" href="#top">✦ GPT6 ASTRA <span>DEMOS</span></a><span>Made of ideas. Built to play.</span><a href="#top">回到顶部 ↑</a></footer>
+  <script>{{SCRIPT}}</script>
+</body>
+</html>

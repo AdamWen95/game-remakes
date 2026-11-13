@@ -1,0 +1,223 @@
+@media(min-width:1450px) {
+  .site-shell {
+    max-width:1380px;
+    padding:0 46px
+  }
+  .arena-stage {
+    height:560px
+  }
+  .setup-panel {
+    padding:25px
+  }
+  .game-layout {
+    grid-template-columns:minmax(0,1fr) 330px
+  }
+  .characters .character-option>span {
+    height:55px
+  }
+  .characters .character-option svg {
+    height:56px;
+    width:50px
+  }
+  .selected-character {
+    height:112px
+  }
+  .map-label {
+    margin-top:29px
+  }
+  .match-settings {
+    margin:24px 0 20px
+  }
+  .map-option>span {
+    height:48px
+  }
+  .intro {
+    padding:35px 0
+  }
+  .intro h1 {
+    font-size:35px
+  }
+  .daily-tip {
+    padding:18px 22px
+  }
+}
+
+@media(max-width:1100px) {
+  .site-shell {
+    padding:0 25px
+  }
+  .game-layout {
+    grid-template-columns:minmax(0,1fr) 285px;
+    gap:18px
+  }
+  .setup-panel,.match-panel {
+    padding:20px 16px
+  }
+  .header nav {
+    gap:23px;
+    margin-left:0
+  }
+  .local-badge {
+    display:none
+  }
+  .footer-note {
+    display:none
+  }
+  .arena-stage {
+    height:500px;
+    padding:10px
+  }
+  .arena-toolbar {
+    padding:0 16px
+  }
+  .section-label small {
+    font-size:7px
+  }
+  .intro-note {
+    margin-right:15px
+  }
+  .bottom-strip {
+    gap:10px
+  }
+  .bottom-strip>div {
+    gap:8px
+  }
+  .bottom-strip p>span {
+    font-size:8px
+  }
+  .page-footer {
+    font-size:8px
+  }
+  .stage-decoration {
+    display:none
+  }
+}
+
+@media(max-width:800px) {
+  .site-shell {
+    padding:0 20px
+  }
+  .header {
+    height:80px;
+    gap:12px
+  }
+  .header nav {
+    gap:20px
+  }
+  .nav-link {
+    font-size:12px
+  }
+  .header-actions {
+    gap:4px
+  }
+  .brand strong {
+    font-size:19px
+  }
+  .brand small {
+    font-size:7px;
+    letter-spacing:1.9px
+  }
+  .brand-mark {
+    width:38px;
+    height:38px;
+    border-radius:13px
+  }
+  .intro h1 {
+    font-size:27px
+  }
+  .intro-note {
+    display:none
+  }
+  .game-layout {
+    grid-template-columns:minmax(0,1fr) 260px;
+    gap:14px
+  }
+  .arena-stage {
+    height:465px;
+    padding:8px
+  }
+  .arena-heading h2 {
+    font-size:13px
+  }
+  .mode-icon {
+    display:none
+  }
+  .arena-heading span:not(.mode-icon) {
+    font-size:8px
+  }
+  .arena-tools {
+    gap:1px
+  }
+  .timer {
+    font-size:12px;
+    margin-right:2px
+  }
+  .arena-toolbar {
+    padding:0 12px
+  }
+  .arena-footer {
+    padding:0 12px
+  }
+  .keyboard-tip {
+    gap:5px
+  }
+  .key-group {
+    gap:2px
+  }
+  .key-group kbd {
+    min-width:18px
+  }
+  .setup-panel,.match-panel {
+    padding:18px 13px
+  }
+  .panel-heading h2 {
+    font-size:13px
+  }
+  .section-label small {
+    display:none
+  }
+  .selected-character {
+    gap:6px;
+    height:95px
+  }
+  .characters {
+    gap:5px
+  }
+  .map-label {
+    margin-top:19px
+  }
+  .match-settings {
+    margin-top:15px
+  }
+  .panel-heading {
+    margin-bottom:20px
+  }
+  .daily-tip {
+    padding:14px
+  }
+  .bottom-strip {
+    padding:0
+  }
+  .bottom-strip>div {
+    align-items:flex-start
+  }
+  .bottom-strip p>span {
+    line-height:1.7
+  }
+  .strip-icon {
+    width:31px;
+    height:31px;
+    border-radius:10px
+  }
+  .bottom-strip b {
+    font-size:10px
+  }
+  .page-footer>span:last-child {
+    display:none
+  }
+  .preview-label {
+    font-size:8px;
+    padding:7px 9px;
+    bottom:24px
+  }
+}
