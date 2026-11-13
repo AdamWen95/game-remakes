@@ -49,4 +49,6 @@ git diff --cached --name-only
 
 `npm run build:single` 生成的各游戏 `release/*.html` 也是构建产物，默认不纳入 Git；它们可作为单独文件分发。构建入口、独立测试配置和 [游戏分享说明](../games/bubble-journey/docs/SHARING.md) 属于公共源码。不要将原始测试记录或私有运维资料附在分享文件旁一并发送。
 
+按当前发布约定，经过校验的 HTML 成品、仅包含该 HTML 的 ZIP 及校验清单纳入根目录 [downloads/](../downloads/README.md)，由普通 Git 提交记录其更新，不创建标签或 Release。原始 `dist/`、各游戏 `release/`、缓存和运维资料仍被忽略。每次更新成品需核对 ZIP 内 HTML 与构建文件完全一致，并同步 README 和校验清单。
+
 源码仓库发布与服务器部署分别进行。提交和推送源码不会自动更新既有站点；实际部署应使用单独生成并验证的产物。

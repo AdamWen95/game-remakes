@@ -1,0 +1,4 @@
+# Prebuilt artifacts retain upstream line endings/shader text and are rebuilt, not merged.
+# Verify their exact bytes with downloads/manifest.json and SHA256SUMS.txt.
+downloads/*.html binary
+downloads/*.zip binary

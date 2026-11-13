@@ -1,0 +1,15 @@
+{
+  "games": [
+    {
+      "id": "bubble-journey",
+      "title": "泡泡奇旅",
+      "sourceCommit": "932b12dee90c7e060a900a25bd46240a8d533cc6",
+      "html": "bubble-journey.html",
+      "htmlBytes": 1275555,
+      "htmlSha256": "4dfefe6479ff50226b43c9b91a94a8cfceaf6786d616671846f3599f3fdf2b88",
+      "zip": "bubble-journey.zip",
+      "zipBytes": 340964,
+      "zipSha256": "369d38f015c655b85fe541e0af786d21f403551bf1be12b4c2f1c4447882d3c8"
+    }
+  ]
+}
