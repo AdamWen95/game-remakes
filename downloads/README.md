@@ -5,12 +5,20 @@
 | 游戏 | 一键下载 | HTML 原文件 |
 | --- | --- | --- |
 | 泡泡奇旅 | [下载 ZIP](https://github.com/AdamWen95/gpt6-astra-demos/raw/refs/heads/main/downloads/bubble-journey.zip) | [下载 / 查看 HTML](https://github.com/AdamWen95/gpt6-astra-demos/raw/refs/heads/main/downloads/bubble-journey.html) |
+| 疾风竞速 | [下载 ZIP](https://github.com/AdamWen95/gpt6-astra-demos/raw/refs/heads/main/downloads/apex-rush.zip) | [下载 / 查看 HTML](https://github.com/AdamWen95/gpt6-astra-demos/raw/refs/heads/main/downloads/apex-rush.html) |
+| 运输船 | [下载 ZIP](https://github.com/AdamWen95/gpt6-astra-demos/raw/refs/heads/main/downloads/cargo-strike.zip) | [下载 / 查看 HTML](https://github.com/AdamWen95/gpt6-astra-demos/raw/refs/heads/main/downloads/cargo-strike.html) |
 
 ZIP 中只有对应的一个 HTML，解压后用浏览器打开即可离线游玩。HTML 原文件链接可能被浏览器显示为文本，请另存为 `.html`；ZIP 链接用于更方便地触发下载。
 
 文件大小、构建源码提交及 SHA-256 见 [manifest.json](manifest.json)，纯文本校验清单见 [SHA256SUMS.txt](SHA256SUMS.txt)。声音需首次交互后开启，战绩仅保存在使用者自己的浏览器。
 
 ## 维护成品
+
+《疾风竞速》：[ZIP](apex-rush.zip) · [HTML](apex-rush.html)。包含三条 3D 赛道、五位 AI 对手、漂移与氮气、触屏及计时挑战；需要 WebGL 2。成品构建核对日期为 2026-11-13。
+
+《运输船》：[ZIP](cargo-strike.zip) · [HTML](cargo-strike.html)。4 对 4 单机 AI 团竞、三种主武器、手枪与手雷、开镜、复活和练枪模式；支持键鼠与触屏，需要 WebGL 2。成品构建核对日期为 2026-11-14。这是非官方重制，场景、武器、材质与声音在本地生成，不包含原游戏提取的资产。
+
+两款新增游戏的源码与成品在同一提交内归档。清单中的 `sourceCommit: null` 和 `sourceState: uncommitted-working-tree` 记录其构建时输入来自尚未提交的工作区，不表示仓库文件当前仍未提交。可使用 `git log -- downloads/<id>.html` 追溯归档提交，并用清单中的 SHA-256 校验成品。
 
 1. 从根目录运行 `npm run build:single`，根据 `demos.json` 检查所有已登记游戏。
 2. 将每个游戏生成的独立 HTML 复制为本目录 `<id>.html`。

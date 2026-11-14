@@ -10,6 +10,32 @@
       "zip": "bubble-journey.zip",
       "zipBytes": 340964,
       "zipSha256": "369d38f015c655b85fe541e0af786d21f403551bf1be12b4c2f1c4447882d3c8"
+    },
+    {
+      "id": "apex-rush",
+      "title": "疾风竞速",
+      "sourceCommit": null,
+      "sourceState": "uncommitted-working-tree",
+      "verifiedDate": "2026-11-13",
+      "html": "apex-rush.html",
+      "htmlBytes": 621202,
+      "htmlSha256": "6206a16e5ce18b0095f17ec15e89dfc2b13ce84b1bdb3803589fb569cdea3e12",
+      "zip": "apex-rush.zip",
+      "zipBytes": 160936,
+      "zipSha256": "6c2ae4cd0a2bd94c21e010df234ed5e49bf8a77f935bf63211a3871e19d77559"
+    },
+    {
+      "id": "cargo-strike",
+      "title": "运输船",
+      "sourceCommit": null,
+      "sourceState": "uncommitted-working-tree",
+      "verifiedDate": "2026-11-14",
+      "html": "cargo-strike.html",
+      "htmlBytes": 632047,
+      "htmlSha256": "b4d2f2b2e39a5ee0cb322f62dad9243b163363b50433950f6f0660ce2058df4f",
+      "zip": "cargo-strike.zip",
+      "zipBytes": 166570,
+      "zipSha256": "c1d7a7ecac4ac8bbef56fe7197d1401315c5cf6f30006a42201179f26c4b5094"
     }
   ]
 }

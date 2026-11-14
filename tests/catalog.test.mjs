@@ -10,7 +10,7 @@ import { escapeHtml, renderCollection } from '../site/render.mjs';
 const original = JSON.parse(await readFile('demos.json', 'utf8'));
 test('current catalog resolves an independently declared game and preview', async () => {
   const value = await loadCatalog(process.cwd());
-  assert.equal(value.games.length, 1); assert.equal(value.games[0].id, 'bubble-journey');
+  assert.deepEqual(value.games.map(game => game.id), ['bubble-journey', 'apex-rush', 'cargo-strike']);
 });
 test('duplicate game ids are rejected before invoking any build', () => {
   const value = structuredClone(original); value.games.push(value.games[0]);

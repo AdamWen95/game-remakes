@@ -14,6 +14,32 @@
       "singleFile": "release/bubble-journey.html",
       "preview": "docs/images/game-lobby.png",
       "accent": "mint"
+    },
+    {
+      "id": "apex-rush",
+      "title": "疾风竞速",
+      "subtitle": "Apex Rush",
+      "description": "入弯，漂移，氮气全开。在晴空海岸、霓虹环线与云顶山道，驾驶你的专属跑车，把风甩在身后。",
+      "category": "3D 赛车",
+      "tags": ["3 条赛道", "漂移与氮气", "5 位 AI 车手"],
+      "controls": "WASD / 方向键驾驶 · Shift 漂移 · 空格氮气",
+      "technology": "Three.js · TypeScript · Vite",
+      "singleFile": "release/apex-rush.html",
+      "preview": "docs/images/game-lobby.png",
+      "accent": "lilac"
+    },
+    {
+      "id": "cargo-strike",
+      "title": "运输船",
+      "subtitle": "Cargo Strike",
+      "description": "重返集装箱之间。端起步枪，穿过侧翼通道，在海风与枪声中展开一场真正可玩的 3D 团队枪战。",
+      "category": "3D 枪战",
+      "tags": ["4 对 4 团队竞技", "步枪与狙击", "运输船战场"],
+      "controls": "WASD 移动 · 鼠标射击 · 右键瞄准 · R 换弹",
+      "technology": "Three.js · TypeScript · Vite",
+      "singleFile": "release/cargo-strike.html",
+      "preview": "docs/images/game-lobby.png",
+      "accent": "peach"
     }
   ]
 }

@@ -1,0 +1,366 @@
+@media(min-width:1500px) and (min-height:900px){
+  .lobby-content{
+  margin-top:65px!important;
+  transform:scale(1.1);
+  transform-origin:top left
+}
+.map-card{
+  top:190px!important;
+  right:6%!important
+}
+
+}
+
+@media(max-height:800px) and (min-width:901px){
+  .topbar{
+  padding:18px 3.4%!important
+}
+.lobby-content{
+  margin-top:24px!important;
+  width:425px!important
+}
+.lobby-content h1{
+  font-size:62px!important;
+  margin-top:16px!important
+}
+.lobby-content h1 span{
+  font-size:23px!important
+}
+.intro{
+  margin-bottom:17px!important
+}
+.match-config{
+  margin-bottom:15px!important
+}
+.loadouts button{
+  padding:7px 11px!important
+}
+.loadouts svg{
+  height:36px!important
+}
+.lobby-footer{
+  position:fixed!important;
+  padding:15px 3.4%!important
+}
+.map-card{
+  top:115px!important
+}
+
+}
+
+@media(max-width:1100px){
+  .map-card{
+  right:3%!important;
+  width:215px!important
+}
+.lobby-content{
+  margin-left:5%!important
+}
+.top-location{
+  display:none
+}
+.lobby-footer>small{
+  display:none
+}
+.bottom-hints{
+  gap:8px!important;
+  font-size:8px!important
+}
+.scoreboard>div{
+  padding:0 13px!important;
+  gap:10px!important
+}
+
+}
+
+@media(max-width:800px){
+  .map-card{
+  display:none
+}
+.lobby-content{
+  width:min(465px,88%)!important;
+  margin:30px auto 90px!important
+}
+.lobby-content h1{
+  font-size:65px!important
+}
+.topbar{
+  padding:18px 6%!important
+}
+.brand{
+  font-size:15px!important
+}
+.brand small{
+  font-size:7px!important
+}
+.lobby-footer{
+  position:relative!important;
+  bottom:auto!important;
+  padding:18px 6%!important
+}
+.lobby-footer>div{
+  display:none
+}
+.lobby-footer>small{
+  display:block!important;
+  font-size:6px!important
+}
+.lobby-footer button{
+  padding:5px 0
+}
+.top-location{
+  display:none
+}
+.radar-wrap{
+  left:12px!important;
+  top:14px!important;
+  width:102px!important;
+  padding:4px!important
+}
+#radar{
+  width:92px!important;
+  height:105px!important
+}
+.radar-wrap>span{
+  font-size:7px!important
+}
+.scoreboard{
+  top:14px!important;
+  height:50px!important
+}
+.scoreboard small{
+  display:none
+}
+.scoreboard .score-center>small{
+  display:block;
+  font-size:7px!important
+}
+.scoreboard>div{
+  padding:0 10px!important;
+  gap:0!important
+}
+.scoreboard b{
+  font-size:24px!important
+}
+.score-center>span{
+  font-size:14px!important
+}
+.hud-top-right{
+  top:14px!important;
+  right:12px!important
+}
+.hud-top-right>span{
+  display:none
+}
+.health-panel{
+  left:16px!important;
+  bottom:20px!important
+}
+.ammo-panel{
+  right:16px!important;
+  bottom:20px!important
+}
+.health-panel>div>b{
+  font-size:30px!important
+}
+.health-panel .armor{
+  margin-left:0!important;
+  padding-left:8px!important
+}
+.ammo-panel>div>b{
+  font-size:40px!important
+}
+.bottom-hints{
+  display:none!important
+}
+#killfeed{
+  top:72px!important;
+  right:12px!important;
+  font-size:8px!important
+}
+.health-icon{
+  display:none
+}
+#protection{
+  top:78px!important;
+  font-size:8px!important
+}
+dialog{
+  min-width:0!important;
+  width:360px;
+  padding:25px!important
+}
+dialog input{
+  width:140px!important
+}
+#notification{
+  font-size:14px!important;
+  width:70%
+}
+.ammo-panel>span{
+  font-size:10px!important
+}
+
+}
+
+.touch #touch-controls{
+  display:block;
+  position:absolute;
+  inset:0;
+  pointer-events:none
+}
+.touch #touch-controls>*{
+  pointer-events:auto;
+  touch-action:none;
+  user-select:none
+}
+.touch #move-pad{
+  position:absolute;
+  left:30px;
+  bottom:115px;
+  border:1px solid #ffffff55;
+  width:112px;
+  height:112px;
+  border-radius:50%;
+  background:#10202533;
+  display:grid;
+  place-items:center
+}
+.touch #move-pad i{
+  width:43px;
+  height:43px;
+  border-radius:50%;
+  border:1px solid #ffffff80;
+  background:#bec8ae22;
+  display:block
+}
+.touch #move-pad span{
+  position:absolute;
+  bottom:10px;
+  font-size:8px;
+  opacity:.6
+}
+.touch #look-pad{
+  position:absolute;
+  right:0;
+  top:24%;
+  width:55%;
+  height:50%
+}
+.touch #touch-fire{
+  position:absolute;
+  right:38px;
+  bottom:138px;
+  width:77px;
+  height:77px;
+  border:2px solid #edba7080;
+  border-radius:50%;
+  background:#14252966;
+  font-size:37px;
+  color:#ffe6c2
+}
+.touch #touch-aim,.touch #touch-jump,.touch #touch-reload,.touch #touch-grenade{
+  position:absolute;
+  border:1px solid #ffffff60;
+  border-radius:50%;
+  width:45px;
+  height:45px;
+  background:#17252750;
+  font-size:21px
+}
+.touch #touch-aim{
+  right:135px;
+  bottom:180px
+}
+.touch #touch-jump{
+  right:145px;
+  bottom:114px
+}
+.touch #touch-reload{
+  right:46px;
+  bottom:232px;
+  font:16px monospace
+}
+.touch #touch-grenade{
+  right:205px;
+  bottom:135px;
+  font:14px monospace
+}
+.touch .bottom-hints{
+  display:none
+}
+.touch #mouse-hint{
+  display:none!important
+}
+
+@media(max-height:550px){
+  .touch #move-pad{
+  bottom:80px;
+  width:90px;
+  height:90px
+}
+.touch #touch-fire{
+  bottom:86px;
+  right:30px;
+  width:64px;
+  height:64px
+}
+.touch #touch-aim{
+  bottom:130px;
+  right:109px
+}
+.touch #touch-jump{
+  bottom:73px;
+  right:115px
+}
+.touch #touch-reload{
+  bottom:166px;
+  right:35px
+}
+.touch #touch-grenade{
+  bottom:95px;
+  right:174px
+}
+.lobby-content{
+  margin-bottom:40px!important
+}
+.lobby-footer{
+  position:relative!important
+}
+.health-panel{
+  bottom:12px!important
+}
+.ammo-panel{
+  bottom:10px!important
+}
+.radar-wrap{
+  width:85px!important
+}
+#radar{
+  width:75px!important;
+  height:85px!important
+}
+#killfeed>div:nth-child(n+3){
+  display:none
+}
+
+}
+
+.touch .ammo-panel>div>b{
+  font-size:34px
+}
+.touch .ammo-panel>span{
+  font-size:9px
+}
+.touch .ammo-panel>div>span{
+  font-size:17px
+}
+.touch .health-panel>div>b{
+  font-size:30px
+}
+.touch .health-panel .armor>b{
+  font-size:17px!important
+}
+.touch .health-track{
+  width:95px
+}

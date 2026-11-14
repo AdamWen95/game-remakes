@@ -1,0 +1,124 @@
+dialog {
+  background:#17262bf7;
+  color:inherit;
+  border:1px solid #afbeb446;
+  padding:32px;
+  min-width:390px;
+  max-width:90vw;
+  box-shadow:0 30px 120px #0008
+}
+dialog::backdrop {
+  background:#07131791;
+  backdrop-filter:blur(5px)
+}
+dialog h2 {
+  font-size:29px;
+  font-weight:500;
+  letter-spacing:3px;
+  margin:13px 0 16px
+}
+dialog p {
+  color:#afc0b1;
+  font-size:12px;
+  line-height:1.8
+}
+dialog .primary {
+  font-size:14px;
+  padding:15px;
+  margin-top:23px
+}
+dialog .secondary {
+  border:1px solid #ffffff38;
+  padding:12px;
+  width:100%;
+  font-size:12px;
+  margin-top:10px
+}
+dialog label {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
+  font-size:12px;
+  margin:23px 0;
+  color:#d1dacb
+}
+dialog input {
+  accent-color:var(--gold);
+  width:180px
+}
+dialog select {
+  color:#e4e9dc;
+  background:#243637;
+  border:1px solid #ffffff38;
+  padding:7px;
+  font-size:11px
+}
+.guide {
+  display:grid;
+  grid-template-columns:auto auto;
+  gap:12px 25px;
+  font-size:12px;
+  color:#c3ccbc
+}
+.guide kbd {
+  font-size:11px
+}
+.result-summary {
+  display:flex;
+  justify-content:space-between;
+  gap:25px;
+  margin:25px 0
+}
+.result-summary b {
+  display:block;
+  font:30px monospace;
+  color:var(--gold)
+}
+.result-summary span {
+  font-size:10px;
+  color:#acbcaf
+}
+#touch-controls {
+  display:none
+}
+#mouse-hint {
+  position:absolute;
+  left:50%;
+  bottom:95px;
+  transform:translateX(-50%);
+  background:#142426dc;
+  padding:8px 12px;
+  font-size:10px;
+  pointer-events:auto
+}
+#capture-mouse {
+  border:1px solid var(--gold);
+  color:var(--gold);
+  font-size:10px;
+  padding:4px 6px;
+  margin-left:12px
+}
+#error {
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  background:#142329ed;
+  z-index:100;
+  padding:30px
+}
+#error p {
+  max-width:600px;
+  line-height:1.8;
+  color:#bfcbc0
+}
+#error .primary {
+  width:240px;
+  justify-content:center
+}
+#hud.practice .scoreboard {
+  border-color:var(--gold)
+}

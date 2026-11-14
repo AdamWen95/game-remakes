@@ -11,6 +11,8 @@
 | 游戏 | 内容 | 源码 | 成品下载 |
 | --- | --- | --- | --- |
 | 泡泡奇旅 · Bubble Journey | 原创泡泡竞技、3 位 AI、随机地图、道具、触屏与音效 | [游戏说明](games/bubble-journey/README.md) | [下载 ZIP（推荐）](https://github.com/AdamWen95/gpt6-astra-demos/raw/refs/heads/main/downloads/bubble-journey.zip) · [HTML 原文件](https://github.com/AdamWen95/gpt6-astra-demos/raw/refs/heads/main/downloads/bubble-journey.html) · [校验值](downloads/SHA256SUMS.txt) |
+| 疾风竞速 · Apex Rush | 原创 3D 赛车、3 条赛道、3 辆跑车、5 位 AI、漂移集气与氮气、计时挑战 | [游戏说明](games/apex-rush/README.md) | [ZIP](downloads/apex-rush.zip) · [独立 HTML](downloads/apex-rush.html) · [校验值](downloads/SHA256SUMS.txt) |
+| 运输船 · Cargo Strike | 3D 第一人称枪战、4 对 4 AI 团竞、步枪与狙击、复活与练枪、触屏操作 | [游戏说明](games/cargo-strike/README.md) | [ZIP](downloads/cargo-strike.zip) · [独立 HTML](downloads/cargo-strike.html) · [校验值](downloads/SHA256SUMS.txt) |
 
 合集首页支持搜索、进入游戏、下载 HTML 与手机布局。清单只包含实际可玩的作品；新游戏通过 `demos.json` 注册。
 
@@ -32,6 +34,10 @@ npm run dev:game
 ```
 
 游戏开发地址为 `http://127.0.0.1:5173/`。
+
+单独开发《疾风竞速》：`npm run dev --workspace=apex-rush`，地址为 `http://127.0.0.1:5174/`。3D 赛车需要支持 WebGL 2 的浏览器；全部美术、模型与声音均在本地生成。
+
+单独开发《运输船》：`npm run dev --workspace=cargo-strike`，地址为 `http://127.0.0.1:5175/`。这是参考经典运输船布局制作的非官方 FPS，支持离线人机对战，需要 WebGL 2；场景、武器、材质与声音均在本地生成。
 
 ## 统一命令
 
@@ -68,6 +74,8 @@ gpt6-astra-demos/
 ├── scripts/                     # 清单校验、统一构建、预览和打包
 ├── tests/                       # 合集单元与浏览器测试
 ├── games/
+│   ├── apex-rush/               # Three.js 3D 赛车，独立游戏及测试
+│   ├── cargo-strike/            # Three.js 3D 枪战，独立游戏及测试
 │   └── bubble-journey/
 │       ├── src/                 # 游戏代码与程序化美术
 │       ├── public/
