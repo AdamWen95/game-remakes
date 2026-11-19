@@ -14,6 +14,19 @@
       "zipSha256": "190c42046478341c93448210e7b89cc05de8f9780d6ca18ba70ec01f84740c20"
     },
     {
+      "id": "apex-rush",
+      "title": "疾风竞速",
+      "sourceCommit": null,
+      "sourceState": "uncommitted-working-tree",
+      "verifiedDate": "2026-11-19",
+      "html": "apex-rush.html",
+      "htmlBytes": 1037548,
+      "htmlSha256": "89f61f9de2b205ff5b0c1f52789cbfa3bde83df4117de2a491a04e2f216cb22d",
+      "zip": "apex-rush.zip",
+      "zipBytes": 487354,
+      "zipSha256": "9bd4fe5c5206f2e4b184c7858c64f9803c1d7745a56fa1a1c70a23805b88cde1"
+    },
+    {
       "id": "cargo-strike",
       "title": "运输船",
       "sourceCommit": null,

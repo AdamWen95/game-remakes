@@ -5,7 +5,7 @@
 | 模型 | 作品 | 入口 |
 | --- | --- | --- |
 | GPT-6 Astra | 泡泡奇旅、疾风竞速、运输船 | [作品与开发说明](gpt6-astra/README.md) · [离线下载](gpt6-astra/downloads/README.md) |
-| GPT-6.2 Sol | 泡泡奇旅、运输船 | [作品与开发说明](gpt6.2-sol/README.md) · [离线下载](gpt6.2-sol/downloads/README.md) |
+| GPT-6.2 Sol | 泡泡奇旅、疾风竞速、运输船 | [作品与开发说明](gpt6.2-sol/README.md) · [离线下载](gpt6.2-sol/downloads/README.md) |
 
 ## 泡泡奇旅对照测试
 
@@ -15,6 +15,15 @@
 | GPT-6.2 Sol | [bubble-journey.html](gpt6.2-sol/downloads/bubble-journey.html?raw=true) | [下载 ZIP](gpt6.2-sol/downloads/bubble-journey.zip?raw=true) |
 
 两个版本同名，建议保留各自的模型目录以便区分。ZIP 解压后用浏览器打开 HTML 即可离线游玩。
+
+## 疾风竞速对照测试
+
+| 模型 | HTML 原文件 | ZIP | 源码与玩法 |
+| --- | --- | --- | --- |
+| GPT-6 Astra | [apex-rush.html](gpt6-astra/downloads/apex-rush.html?raw=true) | [下载 ZIP](gpt6-astra/downloads/apex-rush.zip?raw=true) | [GPT-6 Astra](gpt6-astra/games/apex-rush/README.md) |
+| GPT-6.2 Sol | [apex-rush.html](gpt6.2-sol/downloads/apex-rush.html?raw=true) | [下载 ZIP](gpt6.2-sol/downloads/apex-rush.zip?raw=true) | [GPT-6.2 Sol](gpt6.2-sol/games/apex-rush/README.md) |
+
+两个版本均使用 `apex-rush.html`。分别解压至不同目录，在支持 WebGL 2 的同一个浏览器中对照三条赛道、三辆车、两圈竞速赛和两圈计时挑战。驾驶使用 WASD 或方向键，Shift 漂移，空格释放氮气。
 
 ## 运输船对照测试
 
