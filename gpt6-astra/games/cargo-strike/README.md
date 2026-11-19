@@ -33,7 +33,7 @@
 
 ## 本地开发与独立成品
 
-在仓库根目录运行：
+在 `gpt6-astra/` 目录运行：
 
 ```bash
 npm install

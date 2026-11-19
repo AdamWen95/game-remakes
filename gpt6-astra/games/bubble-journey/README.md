@@ -8,13 +8,13 @@
 
 ## 直接下载游玩
 
-**[下载 ZIP（推荐）](https://github.com/AdamWen95/gpt6-astra-demos/raw/refs/heads/main/downloads/bubble-journey.zip)** · [HTML 原文件](https://github.com/AdamWen95/gpt6-astra-demos/raw/refs/heads/main/downloads/bubble-journey.html)（约 1.22 MiB） · [SHA-256 校验值](../../downloads/SHA256SUMS.txt)
+**[下载 ZIP（推荐）](../../downloads/bubble-journey.zip?raw=true)** · [HTML 原文件](../../downloads/bubble-journey.html?raw=true)（约 1.22 MiB） · [SHA-256 校验值](../../downloads/SHA256SUMS.txt)
 
 ZIP 中只有一个完整 HTML，解压后用浏览器打开即可离线游玩。HTML 原文件链接若显示为文本，请另存为 `.html`。无需安装 Node.js、运行开发服务器或下载源码。下面的命令仅供开发和自行构建使用。
 
 ## 本地开发
 
-本游戏位于 `games/bubble-journey/`，是 `gpt6-astra-demos` 的独立 workspace。需要 Node.js **22.12+**（初次验证使用 24.19.0）和 npm。以下命令从合集仓库根目录执行，依赖由根锁文件管理；游戏资源路径未特别说明时相对于本游戏目录。
+本游戏位于 `gpt6-astra/games/bubble-journey/`，是 GPT-6 Astra 合集的独立 workspace。需要 Node.js **22.12+**（初次验证使用 24.19.0）和 npm。以下命令从 `gpt6-astra/` 目录执行，依赖由该目录的锁文件管理。游戏资源路径未特别说明时相对于本游戏目录。
 
 ```bash
 npm ci
