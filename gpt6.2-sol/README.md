@@ -1,3 +1,5 @@
 # GPT-6.2 Sol
 
-此目录用于收录 GPT-6.2 Sol 的游戏 Demo。目前尚未添加作品。
+| 作品 | 玩法 | 入口 |
+| --- | --- | --- |
+| 泡泡奇旅 | 原创四人泡泡乱斗，一位玩家对战三位 AI | [源码与开发说明](games/bubble-journey/README.md) · [离线下载](downloads/README.md) |

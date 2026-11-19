@@ -1,0 +1,27 @@
+const shapes = {
+  play: '<path d="m9 5 12 7-12 7Z" fill="currentColor" stroke="none"/>',
+  bubble: '<circle cx="11" cy="14" r="7"/><path d="M9 11a3 3 0 0 1 2-1m3-3 3-3m1 0 2 1m-2-3 2-1"/>',
+  sound: '<path d="M4 9v6h4l4 4V5L8 9zm11 0a4 4 0 0 1 0 6m3-9a8 8 0 0 1 0 12"/>',
+  muted: '<path d="M4 9v6h4l4 4V5L8 9zm12 1 5 5m0-5-5 5"/>',
+  help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4.1 1.9c-1.1.9-1.6 1-1.6 2.1m0 3h.01"/>',
+  trophy: '<path d="M8 3h8v7a4 4 0 0 1-8 0Zm0 2H4v2a4 4 0 0 0 4 4m8-6h4v2a4 4 0 0 1-4 4m-4 3v5m-4 1h8"/>',
+  users: '<circle cx="9" cy="8" r="3"/><path d="M3 19v-2c0-2.2 2.7-4 6-4s6 1.8 6 4v2m2-14a3 3 0 0 1 0 6m1 2c2 .7 3 2 3 4v2"/>',
+  map: '<path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Zm6-2v16m6-14v16"/>',
+  shuffle: '<path d="M3 6h3c4 0 6 12 11 12h4m-3-3 3 3-3 3M3 18h3c1.5 0 2.9-1.7 4-3.6M14 9c1-1.8 2-3 3-3h4m-3-3 3 3-3 3"/>',
+  check: '<path d="m5 12 4 4 10-9"/>',
+  chevron: '<path d="m6 9 6 6 6-6"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/>',
+  spark: '<path d="M12 2c0 6 4 10 10 10-6 0-10 4-10 10 0-6-4-10-10-10 6 0 10-4 10-10Z"/>',
+  speed: '<path d="m4 5 6 7-6 7m9-14 6 7-6 7"/>',
+  pause: '<path d="M9 5H6v14h3zm9 0h-3v14h3z" fill="currentColor" stroke="none"/>',
+  home: '<path d="m3 11 9-8 9 8m-16-2v12h14V9m-9 12v-6h4v6"/>',
+  reset: '<path d="M3 12a9 9 0 1 0 3-6L3 9m0-6v6h6"/>',
+  close: '<path d="m6 6 12 12m0-12L6 18"/>',
+  up: '<path d="m5 15 7-7 7 7"/>',
+  down: '<path d="m5 9 7 7 7-7"/>',
+  left: '<path d="m15 5-7 7 7 7"/>',
+  right: '<path d="m9 5 7 7-7 7"/>',
+  gamepad: '<path d="M8 7h8c3 0 4 2 5 5l1 4a2.2 2.2 0 0 1-3.7 2.1L15 15H9l-3.3 3.1A2.2 2.2 0 0 1 2 16l1-4c1-3 2-5 5-5Zm0 2v4m-2-2h4m6 1h.01m3-2h.01"/>',
+} as const;
+export type IconName = keyof typeof shapes;
+export const icon = (name: IconName, className = '') => `<svg class="icon ${className}" aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${shapes[name]}</svg>`;

@@ -5,7 +5,16 @@
 | 模型 | 作品 | 入口 |
 | --- | --- | --- |
 | GPT-6 Astra | 泡泡奇旅、疾风竞速、运输船 | [作品与开发说明](gpt6-astra/README.md) · [离线下载](gpt6-astra/downloads/README.md) |
-| GPT-6.2 Sol | 待添加 | [模型目录](gpt6.2-sol/README.md) |
+| GPT-6.2 Sol | 泡泡奇旅 | [作品与开发说明](gpt6.2-sol/README.md) · [离线下载](gpt6.2-sol/downloads/README.md) |
+
+## 泡泡奇旅对照测试
+
+| 模型 | HTML 原文件 | ZIP |
+| --- | --- | --- |
+| GPT-6 Astra | [bubble-journey.html](gpt6-astra/downloads/bubble-journey.html?raw=true) | [下载 ZIP](gpt6-astra/downloads/bubble-journey.zip?raw=true) |
+| GPT-6.2 Sol | [bubble-journey.html](gpt6.2-sol/downloads/bubble-journey.html?raw=true) | [下载 ZIP](gpt6.2-sol/downloads/bubble-journey.zip?raw=true) |
+
+两个版本同名，建议保留各自的模型目录以便区分。ZIP 解压后用浏览器打开 HTML 即可离线游玩。
 
 ## 本地预览
 
