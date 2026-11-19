@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b131c">
+  <meta name="description" content="运输船 · Cargo Strike。GPT-6.2 Sol 的原创货轮第一人称团队竞技，支持离线 AI 对战。">
+  <title>运输船 · Cargo Strike</title>
+</head>
+<body>
+  <main id="app">
+    <section id="lobby" aria-labelledby="title">
+      <header class="deck-header">
+        <div class="wordmark"><i aria-hidden="true"></i> CARGO STRIKE</div>
+        <button type="button" class="gear" id="lobby-settings"><span aria-hidden="true">⚙</span> 设置</button>
+      </header>
+      <div class="lobby-main">
+        <div class="launch">
+          <p class="eyebrow"><span></span>离线第一人称竞技</p>
+          <h1 id="title">运输船</h1>
+          <p class="subtitle" lang="en">CARGO STRIKE</p>
+          <form id="setup">
+            <fieldset class="mode-selector">
+              <legend>对局模式</legend>
+              <label><input name="mode" type="radio" value="team" checked><span>团队竞技 <small>4V4</small></span></label>
+              <label><input name="mode" type="radio" value="range"><span>自由练枪</span></label>
+            </fieldset>
+            <div class="setup-grid">
+              <label>主武器<select name="primary"><option value="m4">M4A1</option><option value="ak">AK-47</option><option value="awp">AWP</option></select></label>
+              <label class="team-select">AI 难度<select name="level"><option value="recruit">新兵</option><option value="standard" selected>标准</option><option value="veteran">精英</option></select></label>
+              <label class="team-select">胜利目标<select name="target"><option value="10">10 击杀</option><option value="20" selected>20 击杀</option><option value="40">40 击杀</option></select></label>
+            </div>
+            <p id="mode-note">先达成 20 击杀或 3 分钟结束时领先的队伍获胜。</p>
+            <button class="primary" id="start" type="submit">进入战场</button>
+            <p id="boot-error" role="alert" hidden></p>
+          </form>
+        </div>
+        <div class="map-caption">
+          <div class="map-line"></div>
+          <div><small>作战区域</small><strong>远洋货轮</strong><span lang="en">MV PELAGIC</span></div>
+        </div>
+      </div>
+      <footer class="deck-footer">
+        <span>GPT-6.2 SOL</span>
+        <div class="quick-controls"><span><kbd>WASD</kbd> 移动</span><span><kbd>鼠标</kbd> 射击 / 瞄准</span><span><kbd>R</kbd> 换弹</span><button id="controls-help" type="button">全部操作</button></div>
+      </footer>
+    </section>
+    <section id="battle" aria-label="运输船战场" hidden>
+      <canvas id="viewport" aria-label="第一人称 3D 画面"></canvas>
+      <div id="control-plane" aria-hidden="true"></div>
+      <div id="hud">
+        <div class="map-panel"><canvas id="minimap" width="168" height="149" aria-hidden="true"></canvas><span id="zone"></span></div>
+        <div class="ribbon">
+          <div class="score blue"><span>蓝队</span><strong id="blue">00</strong></div>
+          <div class="timer"><strong id="time">3:00</strong><span id="goal">目标 20</span></div>
+          <div class="score red"><strong id="red">00</strong><span>红队</span></div>
+        </div>
+        <button id="pause" type="button" aria-label="暂停">Ⅱ</button>
+        <ul id="feed" aria-label="击杀信息"></ul>
+        <div id="reticle" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+        <div id="scope" aria-hidden="true"><i></i><b></b></div>
+        <div id="hit" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div id="damage" aria-hidden="true"></div>
+        <div id="direction" aria-hidden="true"><i></i></div>
+        <div id="notification" role="status"></div>
+        <div id="center-callout" hidden><strong></strong><span></span></div>
+        <div class="vitals">
+          <div><small>生命</small><strong id="health">100</strong></div>
+          <div><small>护甲</small><strong id="armor">75</strong></div>
+          <div class="vital-bar"><i id="hp-fill"></i></div>
+        </div>
+        <div class="mag">
+          <div class="gun-label"><i></i><span id="gun"></span></div>
+          <div><strong id="loaded">30</strong><span id="reserve"> / 90</span></div>
+          <small id="inventory"></small>
+          <div id="reload-progress" hidden><i></i></div>
+        </div>
+        <div class="bottom-help"><kbd>Tab</kbd> 战绩 <span>·</span> <kbd>Esc</kbd> 暂停</div>
+        <div id="scoreboard" hidden><h2>对局战绩</h2><div class="table-wrap"></div></div>
+      </div>
+      <div id="touch" aria-label="触屏控制">
+        <div id="stick" aria-label="移动"><i></i></div>
+        <div class="touch-actions">
+          <button data-action="slot" aria-label="切换武器">切枪</button><button data-action="grenade" aria-label="投掷手雷">手雷</button>
+          <button data-action="jump" aria-label="跳跃">跳跃</button><button data-action="ads" aria-label="瞄准" aria-pressed="false">瞄准</button>
+          <button data-action="reload" aria-label="换弹">换弹</button><button data-action="fire" aria-label="开火">开火</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <dialog id="pause-dialog" aria-labelledby="pause-title">
+    <h2 id="pause-title">对局暂停</h2>
+    <div class="dialog-actions">
+      <button class="primary" id="resume" type="button">继续对局</button>
+      <button id="restart" type="button">重新开始</button>
+      <button id="pause-settings" type="button">设置</button>
+      <button id="return" type="button">返回大厅</button>
+    </div>
+  </dialog>
+  <dialog id="settings" aria-labelledby="settings-title">
+    <h2 id="settings-title">设置</h2>
+    <label class="setting">音量 <output for="volume" id="volume-text"></output><input id="volume" type="range" min="0" max="1" step=".05"></label>
+    <label class="setting">瞄准灵敏度 <output for="sensitivity" id="sensitivity-text"></output><input id="sensitivity" type="range" min=".4" max="2" step=".1"></label>
+    <label class="setting">画质<select id="quality"><option value="detail">高画质</option><option value="low">流畅</option></select></label>
+    <button id="settings-done" type="button" class="primary">完成</button>
+  </dialog>
+  <dialog id="controls" aria-labelledby="controls-title">
+    <h2 id="controls-title">操作</h2>
+    <dl class="controls-list">
+      <dt>移动 / 转向</dt><dd>WASD 或方向键 / 鼠标</dd><dt>开火 / 瞄准</dt><dd>鼠标左键 / 右键</dd>
+      <dt>主武器 / 副武器 / 换弹</dt><dd>1 / 2 / R</dd><dt>冲刺 / 跳跃 / 蹲下</dt><dd>Shift / 空格 / Ctrl 或 C</dd>
+      <dt>手雷 / 战绩 / 暂停</dt><dd>G / Tab / Esc</dd>
+    </dl>
+    <p>触屏左侧摇杆移动，右侧滑动瞄准。鼠标锁定不可用时，可在画面中拖动转向。</p>
+    <button class="primary" id="controls-done" type="button">完成</button>
+  </dialog>
+  <dialog id="result" aria-labelledby="result-title">
+    <p class="eyebrow">团队竞技结算</p>
+    <h2 id="result-title"></h2>
+    <p id="result-score"></p>
+    <div id="result-stats"></div>
+    <div class="table-wrap"></div>
+    <div class="dialog-actions"><button id="replay" type="button" class="primary">再打一局</button><button id="result-return" type="button">返回大厅</button></div>
+  </dialog>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

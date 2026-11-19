@@ -5,7 +5,7 @@
 | 模型 | 作品 | 入口 |
 | --- | --- | --- |
 | GPT-6 Astra | 泡泡奇旅、疾风竞速、运输船 | [作品与开发说明](gpt6-astra/README.md) · [离线下载](gpt6-astra/downloads/README.md) |
-| GPT-6.2 Sol | 泡泡奇旅 | [作品与开发说明](gpt6.2-sol/README.md) · [离线下载](gpt6.2-sol/downloads/README.md) |
+| GPT-6.2 Sol | 泡泡奇旅、运输船 | [作品与开发说明](gpt6.2-sol/README.md) · [离线下载](gpt6.2-sol/downloads/README.md) |
 
 ## 泡泡奇旅对照测试
 
@@ -15,6 +15,15 @@
 | GPT-6.2 Sol | [bubble-journey.html](gpt6.2-sol/downloads/bubble-journey.html?raw=true) | [下载 ZIP](gpt6.2-sol/downloads/bubble-journey.zip?raw=true) |
 
 两个版本同名，建议保留各自的模型目录以便区分。ZIP 解压后用浏览器打开 HTML 即可离线游玩。
+
+## 运输船对照测试
+
+| 模型 | HTML 原文件 | ZIP | 源码与玩法 |
+| --- | --- | --- | --- |
+| GPT-6 Astra | [cargo-strike.html](gpt6-astra/downloads/cargo-strike.html?raw=true) | [下载 ZIP](gpt6-astra/downloads/cargo-strike.zip?raw=true) | [GPT-6 Astra](gpt6-astra/games/cargo-strike/README.md) |
+| GPT-6.2 Sol | [cargo-strike.html](gpt6.2-sol/downloads/cargo-strike.html?raw=true) | [下载 ZIP](gpt6.2-sol/downloads/cargo-strike.zip?raw=true) | [GPT-6.2 Sol](gpt6.2-sol/games/cargo-strike/README.md) |
+
+两个版本均使用 `cargo-strike.html`，解压时分别保留在各自的模型目录。在同一个支持 WebGL 2 的浏览器中选用相同武器、AI 难度和击杀目标即可比较两版的 4 对 4 对局。自由练枪可单独比较镜头、移动、后坐力和换弹手感。
 
 ## 本地预览
 

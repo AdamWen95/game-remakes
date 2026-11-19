@@ -12,6 +12,19 @@
       "zip": "bubble-journey.zip",
       "zipBytes": 680358,
       "zipSha256": "190c42046478341c93448210e7b89cc05de8f9780d6ca18ba70ec01f84740c20"
+    },
+    {
+      "id": "cargo-strike",
+      "title": "运输船",
+      "sourceCommit": null,
+      "sourceState": "uncommitted-working-tree",
+      "verifiedDate": "2026-11-19",
+      "html": "cargo-strike.html",
+      "htmlBytes": 991975,
+      "htmlSha256": "30843daf7157bffa38bee488561b792b94539ce8133e3563410edf141aa3a89f",
+      "zip": "cargo-strike.zip",
+      "zipBytes": 448318,
+      "zipSha256": "253a29c7a1c4970a59d38e931c20e4f4731237cdc8851503c6a009d58265cd83"
     }
   ]
 }
