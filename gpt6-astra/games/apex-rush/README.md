@@ -6,7 +6,7 @@
 
 ## 游玩
 
-打开 [独立 HTML](../../downloads/apex-rush.html)，或者解压 [ZIP](../../downloads/apex-rush.zip) 后用浏览器打开。无需服务器、网络、账号或安装依赖。需要支持 WebGL 2 的浏览器；硬件加速关闭或显卡不可用时会显示恢复提示。
+[在线试玩《疾风竞速》GPT-6 Astra 版](https://bubble-journey-compare.pages.dev/apex-rush/astra/)。需要支持 WebGL 2 的浏览器。硬件加速关闭或显卡不可用时会显示恢复提示。
 
 - 三条封闭赛道：晴空海岸、霓虹环线、云顶山道，各自独立路线、环境与高程。
 - 三辆跑车：逐风、赤焰、星芒，极速、加速度与操控不同。

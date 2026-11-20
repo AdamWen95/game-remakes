@@ -6,7 +6,7 @@ GPT-6.2 Sol 对照版。原创 3D 街机漂移赛车，以相同的作品名、�
 
 ## 开始比赛
 
-保存 [apex-rush.html](../../downloads/apex-rush.html) 后直接用浏览器打开，或解压 [apex-rush.zip](../../downloads/apex-rush.zip) 后打开其中的 HTML。需要支持 WebGL 2 的浏览器；车辆、场景、音效和大厅主视觉均内置。
+[在线试玩《疾风竞速》GPT-6.2 Sol 版](https://bubble-journey-compare.pages.dev/apex-rush/sol/)。需要支持 WebGL 2 的浏览器，车辆、场景、音效和大厅主视觉均内置。
 
 | 对照项 | Sol 版 |
 | --- | --- |

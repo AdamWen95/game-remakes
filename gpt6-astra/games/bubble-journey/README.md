@@ -6,11 +6,9 @@
 
 ![游戏大厅](docs/images/game-lobby.png)
 
-## 直接下载游玩
+## 在线试玩
 
-**[下载 ZIP（推荐）](../../downloads/bubble-journey.zip?raw=true)** · [HTML 原文件](../../downloads/bubble-journey.html?raw=true)（约 1.22 MiB） · [SHA-256 校验值](../../downloads/SHA256SUMS.txt)
-
-ZIP 中只有一个完整 HTML，解压后用浏览器打开即可离线游玩。HTML 原文件链接若显示为文本，请另存为 `.html`。无需安装 Node.js、运行开发服务器或下载源码。下面的命令仅供开发和自行构建使用。
+[打开《泡泡奇旅》GPT-6 Astra 版](https://bubble-journey-compare.pages.dev/astra/)，浏览器中可直接游玩。
 
 ## 本地开发
 

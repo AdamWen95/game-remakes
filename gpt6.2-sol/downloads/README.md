@@ -1,12 +1,12 @@
-# 在线试玩与离线下载
+# 在线试玩与成品校验
 
-| 游戏 | 在线试玩 | 离线 ZIP | HTML 原文件 |
-| --- | --- | --- | --- |
-| 泡泡奇旅 | [在线试玩](https://bubble-journey-compare.pages.dev/sol/) | [下载 ZIP](bubble-journey.zip?raw=true) | [下载 / 查看 HTML](bubble-journey.html?raw=true) |
-| 疾风竞速 · Apex Rush | [在线试玩](https://bubble-journey-compare.pages.dev/apex-rush/sol/) | [下载 ZIP](apex-rush.zip?raw=true) | [下载 / 查看 HTML](apex-rush.html?raw=true) |
-| 运输船 · Cargo Strike | [在线试玩](https://bubble-journey-compare.pages.dev/cargo-strike/sol/) | [下载 ZIP](cargo-strike.zip?raw=true) | [下载 / 查看 HTML](cargo-strike.html?raw=true) |
+| 游戏 | 在线试玩 |
+| --- | --- |
+| 泡泡奇旅 | [在线试玩](https://bubble-journey-compare.pages.dev/sol/) |
+| 疾风竞速 · Apex Rush | [在线试玩](https://bubble-journey-compare.pages.dev/apex-rush/sol/) |
+| 运输船 · Cargo Strike | [在线试玩](https://bubble-journey-compare.pages.dev/cargo-strike/sol/) |
 
-将 HTML 保存到本机并用浏览器打开即可开始。每个 ZIP 根目录只有对应的 HTML 文件，游戏资源和声音均内置。设置和个人纪录使用浏览器本地存储。
+游戏资源和声音均内置。设置和个人纪录使用浏览器本地存储。
 
 - **泡泡奇旅**使用 WASD 或方向键移动，按空格放置泡泡，按 Esc 暂停。手机布局提供方向键和放泡泡按钮。
 - **疾风竞速**需要 WebGL 2。使用 WASD 或方向键驾驶，Shift 配合转向漂移，空格释放氮气，按 Esc 暂停。手机支持多指触控和自动油门。

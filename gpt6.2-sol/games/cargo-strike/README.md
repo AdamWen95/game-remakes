@@ -4,9 +4,9 @@ GPT-6.2 Sol 对照版。与 [GPT-6 Astra 版](../../../gpt6-astra/games/cargo-st
 
 ![Sol 版第一人称实时画面](docs/images/gameplay.jpg)
 
-## 离线开始
+## 开始游戏
 
-用支持 WebGL 2 的浏览器打开 [cargo-strike.html](../../downloads/cargo-strike.html)，或者解压 [cargo-strike.zip](../../downloads/cargo-strike.zip) 后打开其中的 HTML。场景、贴图和音效均内置。画质、音量和灵敏度保存在当前浏览器。
+用支持 WebGL 2 的浏览器[在线试玩《运输船》GPT-6.2 Sol 版](https://bubble-journey-compare.pages.dev/cargo-strike/sol/)。场景、贴图和音效均内置。画质、音量和灵敏度保存在当前浏览器。
 
 | 对照项 | Sol 版 |
 | --- | --- |

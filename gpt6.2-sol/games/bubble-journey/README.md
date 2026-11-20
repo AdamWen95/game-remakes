@@ -2,7 +2,7 @@
 
 GPT-6.2 Sol 版，一位玩家和三位 AI 的原创泡泡竞技网页游戏。可选择四位领航员、三张主题地图或随机地图。每局时限 150 秒。
 
-[独立 HTML 与 ZIP](../../downloads/README.md)
+[在线试玩《泡泡奇旅》GPT-6.2 Sol 版](https://bubble-journey-compare.pages.dev/sol/)
 
 ## 玩法
 
