@@ -1,12 +1,12 @@
-# 下载即玩
+# 在线试玩与离线下载
 
 本目录保存已构建的游戏成品，直接纳入 Git 仓库。无需安装 Node.js、依赖或构建工具。
 
-| 游戏 | 一键下载 | HTML 原文件 |
-| --- | --- | --- |
-| 泡泡奇旅 | [下载 ZIP](bubble-journey.zip?raw=true) | [下载 / 查看 HTML](bubble-journey.html?raw=true) |
-| 疾风竞速 | [下载 ZIP](apex-rush.zip?raw=true) | [下载 / 查看 HTML](apex-rush.html?raw=true) |
-| 运输船 | [下载 ZIP](cargo-strike.zip?raw=true) | [下载 / 查看 HTML](cargo-strike.html?raw=true) |
+| 游戏 | 在线试玩 | 离线 ZIP | HTML 原文件 |
+| --- | --- | --- | --- |
+| 泡泡奇旅 | [在线试玩](https://bubble-journey-compare.pages.dev/astra/) | [下载 ZIP](bubble-journey.zip?raw=true) | [下载 / 查看 HTML](bubble-journey.html?raw=true) |
+| 疾风竞速 | [在线试玩](https://bubble-journey-compare.pages.dev/apex-rush/astra/) | [下载 ZIP](apex-rush.zip?raw=true) | [下载 / 查看 HTML](apex-rush.html?raw=true) |
+| 运输船 | [在线试玩](https://bubble-journey-compare.pages.dev/cargo-strike/astra/) | [下载 ZIP](cargo-strike.zip?raw=true) | [下载 / 查看 HTML](cargo-strike.html?raw=true) |
 
 ZIP 中只有对应的一个 HTML，解压后用浏览器打开即可离线游玩。HTML 原文件链接可能被浏览器显示为文本，请另存为 `.html`；ZIP 链接用于更方便地触发下载。
 

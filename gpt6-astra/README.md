@@ -2,17 +2,17 @@
 
 这是 [Game Remakes](../README.md) 的 GPT-6 Astra 作品目录。每个游戏独立维护，统一构建为可浏览的合集站点，并保留可直接分享的单文件 HTML。
 
-**无需构建：[下载泡泡奇旅 ZIP](downloads/bubble-journey.zip?raw=true)。** 解压后得到唯一的 `bubble-journey.html`，用浏览器打开即可离线游玩，无需安装 Node.js 或其他依赖。
+下表提供在线试玩和离线下载。下载 ZIP 后，解压并用浏览器打开其中的 HTML 即可离线游玩。
 
 ![合集首页](docs/images/collection-home.png)
 
 ## 作品
 
-| 游戏 | 内容 | 源码 | 成品下载 |
-| --- | --- | --- | --- |
-| 泡泡奇旅 · Bubble Journey | 原创泡泡竞技、3 位 AI、随机地图、道具、触屏与音效 | [游戏说明](games/bubble-journey/README.md) | [ZIP](downloads/bubble-journey.zip?raw=true) · [独立 HTML](downloads/bubble-journey.html?raw=true) · [校验值](downloads/SHA256SUMS.txt) |
-| 疾风竞速 · Apex Rush | 原创 3D 赛车、3 条赛道、3 辆跑车、5 位 AI、漂移集气与氮气、计时挑战 | [游戏说明](games/apex-rush/README.md) | [ZIP](downloads/apex-rush.zip?raw=true) · [独立 HTML](downloads/apex-rush.html?raw=true) · [校验值](downloads/SHA256SUMS.txt) |
-| 运输船 · Cargo Strike | 3D 第一人称枪战、4 对 4 AI 团竞、步枪与狙击、复活与练枪、触屏操作 | [游戏说明](games/cargo-strike/README.md) | [ZIP](downloads/cargo-strike.zip?raw=true) · [独立 HTML](downloads/cargo-strike.html?raw=true) · [校验值](downloads/SHA256SUMS.txt) |
+| 游戏 | 内容 | 在线试玩 | 源码 | 成品下载 |
+| --- | --- | --- | --- | --- |
+| 泡泡奇旅 · Bubble Journey | 原创泡泡竞技、3 位 AI、随机地图、道具、触屏与音效 | [在线试玩](https://bubble-journey-compare.pages.dev/astra/) | [游戏说明](games/bubble-journey/README.md) | [ZIP](downloads/bubble-journey.zip?raw=true) · [独立 HTML](downloads/bubble-journey.html?raw=true) · [校验值](downloads/SHA256SUMS.txt) |
+| 疾风竞速 · Apex Rush | 原创 3D 赛车、3 条赛道、3 辆跑车、5 位 AI、漂移集气与氮气、计时挑战 | [在线试玩](https://bubble-journey-compare.pages.dev/apex-rush/astra/) | [游戏说明](games/apex-rush/README.md) | [ZIP](downloads/apex-rush.zip?raw=true) · [独立 HTML](downloads/apex-rush.html?raw=true) · [校验值](downloads/SHA256SUMS.txt) |
+| 运输船 · Cargo Strike | 3D 第一人称枪战、4 对 4 AI 团竞、步枪与狙击、复活与练枪、触屏操作 | [在线试玩](https://bubble-journey-compare.pages.dev/cargo-strike/astra/) | [游戏说明](games/cargo-strike/README.md) | [ZIP](downloads/cargo-strike.zip?raw=true) · [独立 HTML](downloads/cargo-strike.html?raw=true) · [校验值](downloads/SHA256SUMS.txt) |
 
 合集首页支持搜索、进入游戏、下载 HTML 与手机布局。清单只包含实际可玩的作品；新游戏通过 `demos.json` 注册。
 
@@ -99,7 +99,7 @@ gpt6-astra/
 ## 分享与部署
 
 - **分享整个合集**：托管 `dist/` 或解压合集发布包。首页使用相对链接，可部署在网站根目录或 `/gpt6-astra-demos/` 等子路径。
-- **只分享一个游戏**：从本页下载成品，或发送构建后的 `games/bubble-journey/release/bubble-journey.html`。`dist/bubble-journey/index.html` 是同一份内容，复制并重命名后也能独立打开。
+- **只分享一个游戏**：转发作品表中的在线试玩链接，或发送对应 ZIP 供离线游玩。
 - **本地离线体验**：在支持执行本地 HTML 的浏览器中打开文件。音频需首次交互，战绩存储能力取决于浏览器；不提供多人联机或云存档。
 
 首页可以直接从本地 `dist/index.html` 打开，但要保持游戏子目录；只有各个游戏 HTML 是完全独立的分享文件。

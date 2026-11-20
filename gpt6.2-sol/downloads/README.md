@@ -1,10 +1,10 @@
-# 下载即玩
+# 在线试玩与离线下载
 
-| 游戏 | 一键下载 | HTML 原文件 |
-| --- | --- | --- |
-| 泡泡奇旅 | [下载 ZIP](bubble-journey.zip?raw=true) | [下载 / 查看 HTML](bubble-journey.html?raw=true) |
-| 疾风竞速 · Apex Rush | [下载 ZIP](apex-rush.zip?raw=true) | [下载 / 查看 HTML](apex-rush.html?raw=true) |
-| 运输船 · Cargo Strike | [下载 ZIP](cargo-strike.zip?raw=true) | [下载 / 查看 HTML](cargo-strike.html?raw=true) |
+| 游戏 | 在线试玩 | 离线 ZIP | HTML 原文件 |
+| --- | --- | --- | --- |
+| 泡泡奇旅 | [在线试玩](https://bubble-journey-compare.pages.dev/sol/) | [下载 ZIP](bubble-journey.zip?raw=true) | [下载 / 查看 HTML](bubble-journey.html?raw=true) |
+| 疾风竞速 · Apex Rush | [在线试玩](https://bubble-journey-compare.pages.dev/apex-rush/sol/) | [下载 ZIP](apex-rush.zip?raw=true) | [下载 / 查看 HTML](apex-rush.html?raw=true) |
+| 运输船 · Cargo Strike | [在线试玩](https://bubble-journey-compare.pages.dev/cargo-strike/sol/) | [下载 ZIP](cargo-strike.zip?raw=true) | [下载 / 查看 HTML](cargo-strike.html?raw=true) |
 
 将 HTML 保存到本机并用浏览器打开即可开始。每个 ZIP 根目录只有对应的 HTML 文件，游戏资源和声音均内置。设置和个人纪录使用浏览器本地存储。
 
