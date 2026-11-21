@@ -18,6 +18,7 @@ let last = performance.now(), accumulator = 0, fps = 60, fpsFrames = 0, fpsTime 
 let stopped = false;
 function phase(): void {
     document.body.dataset.phase = match.phase;
+    audio.setLobby(match.phase === 'lobby');
     $('lobby').classList.toggle('hidden', match.phase !== 'lobby');
     $('hud').classList.toggle('hidden', match.phase === 'lobby');
     $('hud').classList.toggle('practice', match.settings.mode === 'practice');
@@ -55,7 +56,13 @@ function resume(): void { if (match.phase === 'paused') {
 } }
 function lobby(): void { match.phase = 'lobby'; controls.reset(); releasePointer(); phase(); }
 function applyPreferences(): void { controls.sensitivity = preferences.sensitivity; audio.setVolume(preferences.volume); renderer.setQuality(preferences.quality); savePreferences(preferences); }
-function fail(message: string): void { $('loading').classList.add('hidden'); $('error-message').textContent = message; $('error').classList.remove('hidden'); stopped = true; }
+function fail(message: string): void { audio.setLobby(false); $('loading').classList.add('hidden'); $('error-message').textContent = message; $('error').classList.remove('hidden'); stopped = true; }
+function unlockLobbyAudio(): void {
+    if (!stopped && match.phase === 'lobby' && $('loading').classList.contains('hidden'))
+        void audio.start().catch(() => {});
+}
+document.addEventListener('click', unlockLobbyAudio);
+document.addEventListener('keydown', unlockLobbyAudio);
 async function boot(): Promise<void> {
     // Yield so loading feedback is painted before geometry and textures are constructed.
     await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));

@@ -132,9 +132,11 @@ function soundButton() {
   $('#sound-toggle').setAttribute('aria-pressed', String(!sound.muted));
 }
 
-document.addEventListener('pointerdown', () => { void sound.unlock(); }, { passive: true });
 document.addEventListener('keydown', () => { void sound.unlock(); }, { passive: true });
-document.addEventListener('click', e => { if ((e.target as HTMLElement).closest('button')) sound.play('click'); });
+document.addEventListener('click', e => {
+  const button = (e.target as HTMLElement).closest('button');
+  void sound.unlock().then(() => { if (button) sound.play('click'); });
+});
 document.querySelectorAll<HTMLButtonElement>('[data-character]').forEach(b => b.addEventListener('click', () => { character = Number(b.dataset.character); persistSettings(); refreshLobby(); }));
 document.querySelectorAll<HTMLButtonElement>('[data-theme]').forEach(b => b.addEventListener('click', () => { theme = Number(b.dataset.theme); persistSettings(); refreshLobby(); }));
 $('#shuffle').addEventListener('click', () => { seed = Math.floor(Math.random() * 1000000); refreshLobby(); toast('新的花园布局，新的小惊喜。'); });
@@ -181,6 +183,7 @@ function pauseWhenAway() {
 document.addEventListener('visibilitychange', () => { if (document.hidden) pauseWhenAway(); });
 window.addEventListener('blur', pauseWhenAway);
 window.addEventListener('pagehide', () => { sound.stopMusic(); });
+window.addEventListener('pageshow', () => { if (scene.phase === 'lobby') sound.startMusic('lobby'); });
 window.addEventListener('error', () => {
   if (!scene.ready) {
     $('#loading').innerHTML = '<b>花园加载遇到问题</b><p>请刷新页面重试，或使用新版浏览器。</p><button id="retry-load">重新加载</button>';

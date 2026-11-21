@@ -1,5 +1,16 @@
-const melody = [72, 76, 79, -1, 81, 79, 76, -1, 74, 77, 81, -1, 79, 77, 74, -1, 72, 76, 79, 84, 81, -1, 79, 76, 74, 77, 76, 74, 72, -1, 67, -1];
-const bass = [48, 48, 53, 53, 45, 45, 55, 55];
+const tracks = {
+  lobby: {
+    step: 0.32, duration: 0.23, melodyGain: 0.22, bassGain: 0.25,
+    melody: [77, 81, 84, -1, 86, 84, 81, -1, 79, 82, 86, -1, 84, 82, 79, -1, 81, 84, 89, -1, 88, 84, 81, -1, 82, 79, 81, 77, 84, -1, 77, -1],
+    bass: [53, 53, 55, 55, 57, 57, 48, 53],
+  },
+  battle: {
+    step: 0.228, duration: 0.15, melodyGain: 0.3, bassGain: 0.38,
+    melody: [72, 76, 79, -1, 81, 79, 76, -1, 74, 77, 81, -1, 79, 77, 74, -1, 72, 76, 79, 84, 81, -1, 79, 76, 74, 77, 76, 74, 72, -1, 67, -1],
+    bass: [48, 48, 53, 53, 45, 45, 55, 55],
+  },
+};
+type Track = keyof typeof tracks;
 type Sound = 'plant' | 'blast' | 'pickup' | 'out' | 'win' | 'loss' | 'click';
 
 export class ArcadeAudio {
@@ -8,10 +19,10 @@ export class ArcadeAudio {
   private effects?: GainNode;
   private timer?: number;
   private noise?: AudioBuffer;
-  private beat = 0;
+  private beat = { lobby: 0, battle: 0 };
   private next = 0;
   private enabled = true;
-  private playing = false;
+  private track: Track | null = null;
 
   async unlock() {
     const Context = window.AudioContext ?? (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
@@ -36,7 +47,7 @@ export class ArcadeAudio {
       }
     }
     try { if (this.context.state !== 'running') await this.context.resume(); } catch { return; }
-    if (this.playing && this.enabled) this.startClock();
+    if (this.track && this.enabled) this.startClock();
   }
 
   mute(muted: boolean) {
@@ -45,14 +56,14 @@ export class ArcadeAudio {
       this.music.gain.setTargetAtTime(muted ? 0 : 0.17, this.context.currentTime, 0.015);
       this.effects.gain.setTargetAtTime(muted ? 0 : 0.32, this.context.currentTime, 0.015);
     }
-    if (!muted && this.playing) this.startClock();
+    if (!muted && this.track) this.startClock();
     else if (muted) this.stopClock();
   }
 
-  loop(playing: boolean) {
-    this.playing = playing;
-    if (playing && this.enabled) this.startClock();
-    else this.stopClock();
+  loop(track: Track | null) {
+    if (this.track !== track) this.stopClock();
+    this.track = track;
+    if (track && this.enabled) this.startClock();
   }
 
   private startClock() {
@@ -69,15 +80,17 @@ export class ArcadeAudio {
 
   private schedule() {
     const context = this.context;
-    if (!context || !this.music || context.state !== 'running') return;
+    const track = this.track;
+    if (!context || !this.music || !track || context.state !== 'running' || document.hidden) return;
+    const { step, duration, melodyGain, bassGain, melody, bass } = tracks[track];
     if (this.next < context.currentTime) this.next = context.currentTime + 0.02;
     while (this.next < context.currentTime + 0.13) {
-      const note = melody[this.beat % melody.length];
-      if (note > 0) this.tone(note, 0.15, this.next, 0.3, 'sine', this.music);
-      if (this.beat % 4 === 0) this.tone(bass[Math.floor(this.beat / 4) % bass.length], 0.34, this.next, 0.38, 'triangle', this.music);
-      if (this.beat % 4 === 2) this.tone(89 - Math.floor(this.beat % 8 / 4) * 3, 0.035, this.next, 0.04, 'sine', this.music);
-      this.beat++;
-      this.next += 0.228;
+      const beat = this.beat[track]++;
+      const note = melody[beat % melody.length];
+      if (note > 0) this.tone(note, duration, this.next, melodyGain, 'sine', this.music);
+      if (beat % 4 === 0) this.tone(bass[Math.floor(beat / 4) % bass.length], 0.34, this.next, bassGain, 'triangle', this.music);
+      if (track === 'battle' && beat % 4 === 2) this.tone(89 - Math.floor(beat % 8 / 4) * 3, 0.035, this.next, 0.04, 'sine', this.music);
+      this.next += step;
     }
   }
 

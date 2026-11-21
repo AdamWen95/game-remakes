@@ -108,6 +108,7 @@ function start() {
     return;
   }
   phase = 'running';
+  sound.setLobby(false);
   sound.unlock();
   sound.mix(race);
   stage.style.setProperty('--race-accent', race.track.course.accent);
@@ -262,6 +263,7 @@ function toLobby(focus = true) {
   view?.dispose();
   race = view = undefined;
   phase = 'lobby';
+  sound.setLobby(true);
   lobby.hidden = false;
   stage.hidden = true;
   updateLobby();
@@ -294,7 +296,7 @@ function handle(action: string) {
     case 'audio':
       options.muted = !options.muted;
       sound.muted = options.muted;
-      if (!options.muted && phase === 'running') sound.unlock();
+      if (!options.muted) sound.unlock();
       sound.mix(phase === 'running' ? race : undefined);
       saveOptions(options);
       refreshAudioButton();
@@ -320,6 +322,7 @@ modal.addEventListener('change', event => {
   if (field.dataset.option === 'autoGas' && field instanceof HTMLInputElement) options.autoGas = field.checked;
   if (field.dataset.option === 'muted' && field instanceof HTMLInputElement) {
     options.muted = sound.muted = field.checked;
+    if (!options.muted) sound.unlock();
     sound.mix();
     refreshAudioButton();
   }
@@ -332,6 +335,11 @@ modal.addEventListener('cancel', event => {
   else if (phase === 'finished') toLobby();
   else closeModal();
 });
+function unlockLobbyAudio() {
+  if (phase === 'lobby') sound.unlock();
+}
+document.addEventListener('click', unlockLobbyAudio);
+document.addEventListener('keydown', unlockLobbyAudio);
 window.addEventListener('blur', pause);
 document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
 canvas.addEventListener('webglcontextlost', event => {

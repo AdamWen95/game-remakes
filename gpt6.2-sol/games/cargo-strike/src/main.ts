@@ -70,6 +70,7 @@ function engage(next: Setup) {
   pauseDialog.close(); result.close();
   match = new Match(next);
   last = 0; bucket = 0;
+  sound.setLobby(false);
   sound.start();
   devices.reset(true);
   view.reset(); hud.reset();
@@ -120,6 +121,7 @@ function home() {
   devices.reset(); devices.unlock();
   pauseDialog.close(); result.close();
   battle.hidden = true; lobby.hidden = false;
+  sound.setLobby(true);
   match = undefined;
   startButton.focus();
 }
@@ -155,6 +157,11 @@ function applySettings() {
 }
 sound.volume(prefs.volume);
 
+function unlockLobbyAudio() {
+  if (stage === 'lobby') sound.start();
+}
+document.addEventListener('click', unlockLobbyAudio);
+document.addEventListener('keydown', unlockLobbyAudio);
 form.addEventListener('submit', e => { e.preventDefault(); engage(setup()); });
 el('#pause').addEventListener('click', pause);
 el('#resume').addEventListener('click', resume);

@@ -105,7 +105,7 @@ function newRound(sameSeed?: number) {
   game?.scale.refresh();
   input.clear();
   input.active = true;
-  audio.loop(true);
+  audio.loop('battle');
   void audio.unlock();
   (document.activeElement as HTMLElement | null)?.blur();
 }
@@ -137,7 +137,7 @@ function pause() {
   view?.paused(true);
   input.active = false;
   input.clear();
-  audio.loop(false);
+  audio.loop(null);
   openPopup('pause', icon('pause'), '游戏暂停', '准备好后继续比赛。', [
     ['resume', '继续游戏', 'cta', 'play'],
     ['restart', '重开本局', 'secondary', 'reset'],
@@ -146,7 +146,7 @@ function pause() {
 }
 
 function finish(round: Match) {
-  audio.loop(false);
+  audio.loop(null);
   audio.play(round.outcome === 'win' ? 'win' : 'loss');
   settings.best = Math.max(settings.best, round.player.score);
   if (round.outcome === 'win') settings.wins++;
@@ -168,7 +168,7 @@ function help() {
     view?.paused(true);
     input.clear();
     input.active = false;
-    audio.loop(false);
+    audio.loop(null);
   }
   openPopup('help', icon('gamepad'), '怎么玩', '经典竞技 · 一位玩家与三位 AI 同场对战', [
     ['resume', '了解了', 'cta', 'check'],
@@ -202,7 +202,7 @@ function resume() {
   if (screen === 'battle' && !match?.outcome) {
     input.active = true;
     view?.paused(false);
-    audio.loop(true);
+    audio.loop('battle');
     void audio.unlock();
     battle.focus({ preventScroll: true });
   }
@@ -213,8 +213,8 @@ function home() {
   input.active = false;
   input.clear();
   view?.paused(true);
-  audio.loop(false);
   setScreen('lobby');
+  audio.loop('lobby');
   refreshLobby();
   get('start').focus({ preventScroll: true });
 }
@@ -259,4 +259,10 @@ sound.addEventListener('click', () => {
 document.addEventListener('visibilitychange', () => {
   if (document.hidden && screen === 'battle') pause();
 });
+function unlockLobbyAudio() {
+  if (screen === 'lobby' && !settings.muted) void audio.unlock();
+}
+document.addEventListener('click', unlockLobbyAudio, { passive: true });
+document.addEventListener('keydown', unlockLobbyAudio, { passive: true });
 refreshLobby();
+audio.loop('lobby');

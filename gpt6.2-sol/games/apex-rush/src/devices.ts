@@ -75,6 +75,9 @@ export class Input {
   }
 }
 
+const lobbyNotes = [64, 67, 71, 0, 74, 71, 67, 0, 60, 64, 67, 0, 72, 67, 64, 0, 62, 66, 69, 0, 74, 69, 66, 0, 59, 62, 67, 69, 67, 62, 59, 0];
+const lobbyBass = [40, 48, 50, 43];
+
 export class Sound {
   private ctx?: AudioContext;
   private master?: GainNode;
@@ -82,7 +85,16 @@ export class Sound {
   private harmonics?: OscillatorNode;
   private engine?: GainNode;
   private tires?: GainNode;
-  muted = false;
+  private inLobby = true;
+  private lobbyTimer?: ReturnType<typeof setInterval>;
+  private lobbyStep = 0;
+  private silent = false;
+
+  get muted() { return this.silent; }
+  set muted(muted: boolean) {
+    this.silent = muted;
+    this.syncLobbyMusic();
+  }
 
   unlock() {
     if (this.muted) return;
@@ -126,10 +138,35 @@ export class Sound {
         source.start();
         Object.assign(this, { engine, rpm, harmonics, tires });
       }
-      if (this.ctx.state !== 'running') void this.ctx.resume().catch(() => undefined);
+      if (this.ctx.state === 'running') this.syncLobbyMusic();
+      else void this.ctx.resume().then(() => this.syncLobbyMusic()).catch(() => undefined);
     } catch {
       // Audio is optional on browsers with restricted Web Audio support.
     }
+  }
+
+  setLobby(active: boolean) {
+    this.inLobby = active;
+    this.syncLobbyMusic();
+  }
+  private syncLobbyMusic() {
+    if (!this.inLobby || this.muted || this.ctx?.state !== 'running') {
+      clearInterval(this.lobbyTimer);
+      this.lobbyTimer = undefined;
+      return;
+    }
+    if (this.lobbyTimer !== undefined) return;
+    this.lobbyTimer = setInterval(() => {
+      if (document.hidden || this.ctx?.state !== 'running') return;
+      const step = this.lobbyStep++;
+      const midi = lobbyNotes[step % lobbyNotes.length];
+      const frequency = 440 * 2 ** ((midi - 69) / 12);
+      if (midi) this.tone(frequency, frequency, .145, .067, 'triangle');
+      if (step % 4 === 0) {
+        const bass = 440 * 2 ** ((lobbyBass[Math.floor(step / 8) % lobbyBass.length] - 69) / 12);
+        this.tone(bass, bass, .29, .072, 'sine');
+      }
+    }, 192);
   }
 
   mix(race?: Race) {
@@ -146,24 +183,29 @@ export class Sound {
   }
 
   cue(kind: 'count' | 'go' | 'mini' | 'nitro' | 'hit' | 'lap' | 'ready' | 'finish') {
-    const ctx = this.ctx;
-    if (!ctx || !this.master || this.muted || ctx.state !== 'running') return;
     const cues = {
       count: [420, 320, .17], go: [560, 880, .26], mini: [405, 710, .23], nitro: [205, 850, .48],
       hit: [125, 48, .23], lap: [525, 890, .25], ready: [700, 1140, .20], finish: [544, 1180, .68],
     };
     const [from, to, duration] = cues[kind];
+    this.tone(from, to, duration, .48, kind === 'hit' ? 'triangle' : 'sine');
+  }
+
+  private tone(from: number, to: number, duration: number, volume: number, type: OscillatorType) {
+    const ctx = this.ctx;
+    if (!ctx || !this.master || this.muted || ctx.state !== 'running') return;
     const now = ctx.currentTime;
     const note = ctx.createOscillator();
     const gain = ctx.createGain();
-    note.type = kind === 'hit' ? 'triangle' : 'sine';
+    note.type = type;
     note.frequency.setValueAtTime(from, now);
     note.frequency.exponentialRampToValueAtTime(to, now + duration * .8);
     gain.gain.setValueAtTime(.001, now);
-    gain.gain.exponentialRampToValueAtTime(.48, now + .016);
+    gain.gain.exponentialRampToValueAtTime(volume, now + .016);
     gain.gain.exponentialRampToValueAtTime(.001, now + duration);
     note.connect(gain).connect(this.master);
     note.start(now);
     note.stop(now + duration);
+    note.onended = () => { note.disconnect(); gain.disconnect(); };
   }
 }

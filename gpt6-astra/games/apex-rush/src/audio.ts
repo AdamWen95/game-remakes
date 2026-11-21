@@ -1,9 +1,15 @@
+const lobbyNotes = [57, 0, 69, 72, 69, 0, 64, 67, 55, 0, 67, 71, 67, 0, 62, 64, 53, 0, 65, 69, 65, 0, 60, 62, 55, 0, 67, 71, 74, 71, 67, 0];
+const lobbyBass = [45, 43, 41, 43];
+
 export class AudioEngine {
   private ctx?: AudioContext;
   private master?: GainNode;
   private engine?: OscillatorNode;
   private engineGain?: GainNode;
   private noiseGain?: GainNode;
+  private inLobby = true;
+  private lobbyTimer?: ReturnType<typeof setInterval>;
+  private lobbyStep = 0;
   muted = false;
   async unlock() {
     try {
@@ -21,9 +27,37 @@ export class AudioEngine {
         noise.connect(nf).connect(ng).connect(gain); noise.start(); this.noiseGain=ng;
       }
       if (this.ctx.state==='suspended') await this.ctx.resume();
+      this.syncLobbyMusic();
     } catch { /* Audio is optional: driving remains available when the browser blocks it. */ }
   }
-  setMuted(value: boolean) { this.muted=value; if (this.ctx && this.master) this.master.gain.setTargetAtTime(value?0:0.18,this.ctx.currentTime,0.03); }
+  setMuted(value: boolean) {
+    this.muted = value;
+    if (this.ctx && this.master) this.master.gain.setTargetAtTime(value ? 0 : 0.18, this.ctx.currentTime, 0.03);
+    this.syncLobbyMusic();
+  }
+  setLobby(active: boolean) {
+    this.inLobby = active;
+    this.syncLobbyMusic();
+  }
+  private syncLobbyMusic() {
+    if (!this.inLobby || this.muted || this.ctx?.state !== 'running') {
+      clearInterval(this.lobbyTimer);
+      this.lobbyTimer = undefined;
+      return;
+    }
+    if (this.lobbyTimer !== undefined) return;
+    this.lobbyTimer = setInterval(() => {
+      if (document.hidden || this.ctx?.state !== 'running') return;
+      const step = this.lobbyStep++;
+      const midi = lobbyNotes[step % lobbyNotes.length];
+      const frequency = 440 * 2 ** ((midi - 69) / 12);
+      if (midi) this.tone(frequency, .16, .088, 'triangle');
+      if (step % 4 === 0) {
+        const bass = 440 * 2 ** ((lobbyBass[Math.floor(step / 8) % lobbyBass.length] - 69) / 12);
+        this.tone(bass, .31, .1, 'sine');
+      }
+    }, 204);
+  }
   update(speed: number, drift: boolean, boost: boolean, active: boolean) {
     if (!this.ctx || !this.engine || !this.engineGain || !this.noiseGain) return;
     const t=this.ctx.currentTime;
@@ -31,10 +65,10 @@ export class AudioEngine {
     this.engineGain.gain.setTargetAtTime(active?0.07+speed*0.001:0,t,0.1);
     this.noiseGain.gain.setTargetAtTime(active?(drift?0.22:boost?0.14:speed*0.0008):0,t,0.08);
   }
-  tone(frequency: number, duration = 0.12) {
+  tone(frequency: number, duration = 0.12, volume = 0.35, type: OscillatorType = 'sine') {
     if (!this.ctx || !this.master) return;
     const ctx=this.ctx, oscillator=ctx.createOscillator(), gain=ctx.createGain();
-    oscillator.frequency.value=frequency; oscillator.type='sine'; gain.gain.setValueAtTime(0.35,ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+duration);
+    oscillator.frequency.value=frequency; oscillator.type=type; gain.gain.setValueAtTime(volume,ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+duration);
     oscillator.connect(gain).connect(this.master); oscillator.start(); oscillator.stop(ctx.currentTime+duration);
     oscillator.onended=()=>{oscillator.disconnect();gain.disconnect();};
   }

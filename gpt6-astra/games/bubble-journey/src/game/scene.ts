@@ -68,7 +68,7 @@ export class ArenaScene extends Phaser.Scene {
       backgroundColor: '#297863', padding: { x: 7, y: 4 },
     }).setOrigin(.5, 1).setDepth(2000);
     this.setPhase(preview ? 'lobby' : 'countdown');
-    if (preview) this.sfx.stopMusic(); else this.sfx.startMusic();
+    this.sfx.startMusic(preview ? 'lobby' : 'battle');
     this.renderWorld(0); this.hooks.status(this.match, 3);
   }
   private setPhase(phase: Phase) {

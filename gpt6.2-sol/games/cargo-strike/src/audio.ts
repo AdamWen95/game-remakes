@@ -1,11 +1,17 @@
 import { clamp, length, lookAt, type Vec } from './arena.ts';
 import type { Event } from './combat.ts';
 
+const lobbyNotes = [52, 59, 64, 0, 62, 59, 55, 0, 55, 62, 67, 0, 64, 62, 59, 0, 50, 57, 62, 0, 60, 57, 53, 0, 47, 55, 59, 0, 57, 55, 52, 0];
+const lobbyBass = [40, 43, 38, 35];
+
 export class Sound {
   private context?: AudioContext;
   private mix?: GainNode;
   private noise?: AudioBuffer;
   private level = .65;
+  private inLobby = true;
+  private lobbyTimer?: ReturnType<typeof setInterval>;
+  private lobbyStep = 0;
 
   start() {
     try {
@@ -19,7 +25,8 @@ export class Sound {
         const data = this.noise.getChannelData(0);
         for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
       }
-      void this.context.resume().catch(() => {});
+      if (this.context.state === 'running') this.syncLobbyMusic();
+      else void this.context.resume().then(() => this.syncLobbyMusic()).catch(() => {});
     } catch {
       // Web Audio may be unavailable on a device or blocked by its sound policy.
     }
@@ -28,6 +35,32 @@ export class Sound {
   volume(level: number) {
     this.level = level;
     if (this.context && this.mix) this.mix.gain.setTargetAtTime(level * .76, this.context.currentTime, .04);
+    this.syncLobbyMusic();
+  }
+
+  setLobby(active: boolean) {
+    this.inLobby = active;
+    this.syncLobbyMusic();
+  }
+  private syncLobbyMusic() {
+    const mix = this.mix;
+    if (!mix || !this.inLobby || this.level <= 0 || this.context?.state !== 'running') {
+      clearInterval(this.lobbyTimer);
+      this.lobbyTimer = undefined;
+      return;
+    }
+    if (this.lobbyTimer !== undefined) return;
+    this.lobbyTimer = setInterval(() => {
+      if (document.hidden || this.context?.state !== 'running') return;
+      const step = this.lobbyStep++;
+      const midi = lobbyNotes[step % lobbyNotes.length];
+      const frequency = 440 * 2 ** ((midi - 69) / 12);
+      if (midi) this.note(mix, .066, .24, frequency, frequency);
+      if (step % 4 === 0) {
+        const bass = 440 * 2 ** ((lobbyBass[Math.floor(step / 8) % lobbyBass.length] - 69) / 12);
+        this.note(mix, .066, .49, bass, bass);
+      }
+    }, 300);
   }
 
   private envelope(destination: AudioNode, gain: number, duration: number, delay = 0) {

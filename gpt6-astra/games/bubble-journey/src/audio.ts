@@ -1,11 +1,28 @@
+const tracks = {
+  lobby: {
+    beatMs: 320, length: .24, volume: .06, bassVolume: .038,
+    melody: [67, 71, 74, 76, 74, 71, 69, 0, 69, 72, 76, 79, 76, 74, 72, 0, 71, 74, 79, 81, 79, 74, 71, 0, 72, 76, 74, 72, 69, 71, 67, 0],
+    bass: [43, 45, 47, 48],
+  },
+  battle: {
+    beatMs: 230, length: .3, volume: .045, bassVolume: .055,
+    melody: [76, 79, 81, 79, 76, 72, 74, 0, 76, 79, 84, 81, 79, 76, 74, 0, 72, 76, 79, 76, 74, 72, 69, 0, 72, 74, 76, 79, 76, 74, 72, 0],
+    bass: [48, 53, 57, 55],
+  },
+};
+type MusicTrack = keyof typeof tracks;
+
 export class Sound {
   private context: AudioContext | null = null;
   private master: GainNode | null = null;
   private timer: ReturnType<typeof setInterval> | null = null;
-  private beat = 0;
-  private active = false;
+  private beat = { lobby: 0, battle: 0 };
+  private track: MusicTrack | null = null;
+  private musicEnabled = true;
   muted = false;
-  music = true;
+
+  get music() { return this.musicEnabled; }
+  set music(enabled: boolean) { this.musicEnabled = enabled; this.syncMusic(); }
 
   async unlock() {
     if (!this.context) {
@@ -15,11 +32,13 @@ export class Sound {
       } catch { return; }
     }
     if (this.context.state === 'suspended') await this.context.resume().catch(() => {});
+    this.syncMusic();
   }
 
   setMuted(muted: boolean) {
     this.muted = muted;
     if (this.master && this.context) this.master.gain.setTargetAtTime(muted ? 0 : .4, this.context.currentTime, .03);
+    this.syncMusic();
   }
   private note(frequency: number, length: number, volume = .1, type: OscillatorType = 'sine', delay = 0, slide?: number) {
     if (!this.context || !this.master || this.context.state !== 'running' || this.muted) return;
@@ -41,19 +60,33 @@ export class Sound {
     if (kind === 'win') [523, 659, 784, 1047].forEach((f, i) => this.note(f, .4, .15, 'triangle', i * .13));
     if (kind === 'tick') this.note(740, .1, .13);
   }
-  startMusic() {
-    this.active = true;
-    if (this.timer) return;
-    // Original 16-bar pentatonic motif, synthesized locally with a soft bass line.
-    const melody = [76, 79, 81, 79, 76, 72, 74, 0, 76, 79, 84, 81, 79, 76, 74, 0, 72, 76, 79, 76, 74, 72, 69, 0, 72, 74, 76, 79, 76, 74, 72, 0];
-    this.timer = setInterval(() => {
-      if (!this.active || !this.music || this.muted) return;
-      const midi = melody[this.beat % melody.length];
-      if (midi) this.note(440 * 2 ** ((midi - 69) / 12), .3, .045, 'triangle');
-      if (this.beat % 4 === 0) this.note(440 * 2 ** (([48, 53, 57, 55][Math.floor(this.beat / 8) % 4] - 69) / 12), .6, .055);
-      this.beat++;
-    }, 230);
+  startMusic(track: MusicTrack = 'battle') {
+    if (this.track !== track) {
+      this.clearMusicTimer();
+      this.track = track;
+    }
+    this.syncMusic();
   }
-  stopMusic() { this.active = false; if (this.timer) clearInterval(this.timer); this.timer = null; }
+  private syncMusic() {
+    const track = this.track;
+    if (!track || !this.musicEnabled || this.muted || this.context?.state !== 'running') {
+      this.clearMusicTimer();
+      return;
+    }
+    if (this.timer !== null) return;
+    const { beatMs, length, volume, bassVolume, melody, bass } = tracks[track];
+    this.timer = setInterval(() => {
+      if (document.hidden || this.context?.state !== 'running') return;
+      const beat = this.beat[track]++;
+      const midi = melody[beat % melody.length];
+      if (midi) this.note(440 * 2 ** ((midi - 69) / 12), length, volume, 'triangle');
+      if (beat % 4 === 0) this.note(440 * 2 ** ((bass[Math.floor(beat / 8) % bass.length] - 69) / 12), .6, bassVolume);
+    }, beatMs);
+  }
+  private clearMusicTimer() {
+    if (this.timer !== null) clearInterval(this.timer);
+    this.timer = null;
+  }
+  stopMusic() { this.track = null; this.clearMusicTimer(); }
   dispose() { this.stopMusic(); void this.context?.close(); }
 }

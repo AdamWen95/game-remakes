@@ -1,9 +1,16 @@
 import { distance, type Vec3 } from './game/math';
 import type { WeaponId } from './game/weapons';
+
+const lobbyNotes = [50, 57, 0, 62, 57, 53, 0, 55, 48, 55, 0, 60, 55, 52, 0, 55, 46, 53, 0, 58, 57, 53, 0, 50, 48, 55, 0, 60, 58, 55, 0, 53];
+const lobbyBass = [38, 36, 34, 36];
+
 export class AudioEngine {
     context?: AudioContext;
     private master?: GainNode;
     private noise?: AudioBuffer;
+    private inLobby = true;
+    private lobbyTimer?: ReturnType<typeof setInterval>;
+    private lobbyStep = 0;
     volume = .65;
     async start(): Promise<void> {
         if (!this.context) {
@@ -18,9 +25,36 @@ export class AudioEngine {
         }
         if (this.context.state === 'suspended')
             await this.context.resume();
+        this.syncLobbyMusic();
     }
-    setVolume(v: number): void { this.volume = v; if (this.master)
-        this.master.gain.setTargetAtTime(v, this.context!.currentTime, .05); }
+    setVolume(v: number): void {
+        this.volume = v;
+        if (this.master) this.master.gain.setTargetAtTime(v, this.context!.currentTime, .05);
+        this.syncLobbyMusic();
+    }
+    setLobby(active: boolean) {
+      this.inLobby = active;
+      this.syncLobbyMusic();
+    }
+    private syncLobbyMusic() {
+      if (!this.inLobby || this.volume <= 0 || this.context?.state !== 'running') {
+        clearInterval(this.lobbyTimer);
+        this.lobbyTimer = undefined;
+        return;
+      }
+      if (this.lobbyTimer !== undefined) return;
+      this.lobbyTimer = setInterval(() => {
+        if (document.hidden || this.context?.state !== 'running') return;
+        const step = this.lobbyStep++;
+        const midi = lobbyNotes[step % lobbyNotes.length];
+        const frequency = 440 * 2 ** ((midi - 69) / 12);
+        if (midi) this.tone(frequency, frequency, .27, .053, 0, 'triangle');
+        if (step % 4 === 0) {
+          const bass = 440 * 2 ** ((lobbyBass[Math.floor(step / 8) % lobbyBass.length] - 69) / 12);
+          this.tone(bass, bass, .5, .06);
+        }
+      }, 313);
+    }
     private tone(frequency: number, end: number, duration: number, gain: number, delay = 0, type: OscillatorType = 'sine'): void {
         if (!this.context || !this.master)
             return;

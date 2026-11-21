@@ -27,7 +27,13 @@ input.auto=save.settings.auto;
 function saveSettings() { persist(save);updateLobby(save); }
 function action(name: string) {
   if(name==='blur') { if(race && (race.phase==='racing' || race.phase==='countdown')) pause(); return; }
-  if(name==='mute') { save.settings.muted=!save.settings.muted;audio.setMuted(save.settings.muted);saveSettings();return; }
+  if(name==='mute') {
+    save.settings.muted = !save.settings.muted;
+    audio.setMuted(save.settings.muted);
+    if (!save.settings.muted) void audio.unlock();
+    saveSettings();
+    return;
+  }
   if(name==='camera' && race) world.cameraMode=(world.cameraMode+1)%2;
   if(name==='reset') race?.resetCar();
   if(name==='pause'){
@@ -49,6 +55,7 @@ function resume() {
 }
 function start() {
   if(!world)return;
+  audio.setLobby(false);
   closeDialog();modalKind=null;input.clear();
   // Keyboard activation should return focus to the play surface so Space always fires nitro.
   (document.activeElement as HTMLElement)?.blur();
@@ -61,7 +68,7 @@ function backToLobby() {
   closeDialog();modalKind=null;race=null;hud=null;finished=false;input.clear();
   document.body.dataset.phase='lobby';document.body.classList.remove('boosting');
   el('lobby').hidden=false;el('race-ui').hidden=true;world.setCars(save.settings.car);world.update(0,0,null);
-  audio.update(0,false,false,false);updateLobby(save);el('start').focus();
+  audio.update(0,false,false,false);audio.setLobby(true);updateLobby(save);el('start').focus();
 }
 function finish() {
   if(!race || finished)return;finished=true;document.body.dataset.phase='finished';input.clear();
@@ -80,11 +87,16 @@ document.querySelectorAll<HTMLButtonElement>('[data-track]').forEach(button=>but
 document.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(button=>button.onclick=()=>{save.settings.mode=button.dataset.mode as 'race'|'time';saveSettings();});
 el<HTMLSelectElement>('difficulty').onchange=event=>{save.settings.difficulty=(event.target as HTMLSelectElement).value as 'casual'|'pro';saveSettings();};
 el<HTMLInputElement>('auto').onchange=event=>{save.settings.auto=(event.target as HTMLInputElement).checked;input.auto=save.settings.auto;saveSettings();};
-el('sound').onclick=()=>{void audio.unlock();action('mute');};
+el('sound').onclick=()=>action('mute');
 el('quality').onclick=()=>{save.settings.quality=save.settings.quality==='high'?'low':'high';world.setQuality(save.settings.quality);saveSettings();};
 el('help').onclick=()=>{modalKind='help';showHelp(()=>{modalKind=null;});};
 el('pause').onclick=pause;
 document.querySelector<HTMLAnchorElement>('.brand')!.onclick=event=>{event.preventDefault();if(race)backToLobby();};
+function unlockLobbyAudio() {
+  if (!race && el('loading').hidden && !audio.muted) void audio.unlock();
+}
+document.addEventListener('click', unlockLobbyAudio);
+document.addEventListener('keydown', unlockLobbyAudio);
 addEventListener('resize',()=>world?.resize());
 el('world').addEventListener('webglcontextlost',event=>{event.preventDefault();pause();failure('图形连接已中断。重新加载页面后可继续游玩，已保存的纪录会保留。');});
 

@@ -3,39 +3,41 @@
     {
       "id": "bubble-journey",
       "title": "泡泡奇旅",
-      "sourceCommit": "932b12dee90c7e060a900a25bd46240a8d533cc6",
+      "sourceCommit": null,
+      "sourceState": "uncommitted-working-tree",
+      "verifiedDate": "2026-11-21",
       "html": "bubble-journey.html",
-      "htmlBytes": 1275555,
-      "htmlSha256": "4dfefe6479ff50226b43c9b91a94a8cfceaf6786d616671846f3599f3fdf2b88",
+      "htmlBytes": 1276303,
+      "htmlSha256": "13be3860f387d50bc531ba59da5ad0628681abb40b8de4530b8a74b2c244e4ef",
       "zip": "bubble-journey.zip",
-      "zipBytes": 340964,
-      "zipSha256": "369d38f015c655b85fe541e0af786d21f403551bf1be12b4c2f1c4447882d3c8"
+      "zipBytes": 342265,
+      "zipSha256": "64297c49e1fe023a4e0ddd2a054e8d8886f5cc2b95e92d22f215cff4d5c06f9a"
     },
     {
       "id": "apex-rush",
       "title": "疾风竞速",
       "sourceCommit": null,
       "sourceState": "uncommitted-working-tree",
-      "verifiedDate": "2026-11-13",
+      "verifiedDate": "2026-11-21",
       "html": "apex-rush.html",
-      "htmlBytes": 621202,
-      "htmlSha256": "6206a16e5ce18b0095f17ec15e89dfc2b13ce84b1bdb3803589fb569cdea3e12",
+      "htmlBytes": 622058,
+      "htmlSha256": "6e3531b6e25bdfc907e604bcaeafe25e7dd667ec636724a53f0e34a498a9dc15",
       "zip": "apex-rush.zip",
-      "zipBytes": 160936,
-      "zipSha256": "6c2ae4cd0a2bd94c21e010df234ed5e49bf8a77f935bf63211a3871e19d77559"
+      "zipBytes": 161274,
+      "zipSha256": "30fd2e0ba1484e185d646325d672f3af97a7be2b68870bbb1acb37b73d398f43"
     },
     {
       "id": "cargo-strike",
       "title": "运输船",
       "sourceCommit": null,
       "sourceState": "uncommitted-working-tree",
-      "verifiedDate": "2026-11-14",
+      "verifiedDate": "2026-11-21",
       "html": "cargo-strike.html",
-      "htmlBytes": 632047,
-      "htmlSha256": "b4d2f2b2e39a5ee0cb322f62dad9243b163363b50433950f6f0660ce2058df4f",
+      "htmlBytes": 632966,
+      "htmlSha256": "97e8a576aab3b2fc97396e42cd911375ba614a6ac85ea8699fd2e2cf0a68953d",
       "zip": "cargo-strike.zip",
-      "zipBytes": 166570,
-      "zipSha256": "c1d7a7ecac4ac8bbef56fe7197d1401315c5cf6f30006a42201179f26c4b5094"
+      "zipBytes": 164896,
+      "zipSha256": "b9547c070f2a99d09be0eade3764d9e08290a49668ae30d3e739ee8674bdf99b"
     }
   ]
 }
